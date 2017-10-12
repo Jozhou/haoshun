@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/font_color_two">
+
+    <com.corelibrary.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lefticon="@drawable/btn_back"
+        app:title="@string/personal_info" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/font_color_two"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_140px"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px"
+                android:background="@color/font_color_four">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <com.corelibrary.view.CircleImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="@dimen/dd_dimen_100px"
+                        android:layout_height="@dimen/dd_dimen_100px"
+                        android:src="@drawable/ic_launcher"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_nick"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/nick_name"/>
+
+                <TextView
+                    android:id="@+id/tv_nick"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_sex"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/sex"/>
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_account"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/account"/>
+
+                <TextView
+                    android:id="@+id/tv_account"
+                    style="@style/tv_personal_info_value"
+                    android:text="188888888"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_bind_tel"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/bind_tel"/>
+
+                <TextView
+                    android:id="@+id/tv_bind_tel"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_modify_psw"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/modify_psw"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_brand"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/brand_id"/>
+
+                <TextView
+                    android:id="@+id/tv_brand"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_series"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/series_id"/>
+
+                <TextView
+                    android:id="@+id/tv_series"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_year_style"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/year_style"/>
+
+                <TextView
+                    android:id="@+id/tv_year_style"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                 />
+
+            <LinearLayout
+                android:id="@+id/ll_version"
+                style="@style/ll_personal_info">
+
+                <TextView
+                    style="@style/tv_personal_info_name"
+                    android:text="@string/version"/>
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    style="@style/tv_personal_info_value"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arror_right"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

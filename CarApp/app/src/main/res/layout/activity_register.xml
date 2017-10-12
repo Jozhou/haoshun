@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.corelibrary.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lefticon="@drawable/btn_back"
+        app:title="@string/register" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/font_color_two"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dd_dimen_40px"
+                android:layout_marginTop="@dimen/dd_dimen_50px"
+                android:src="@drawable/icon_head"
+                android:layout_gravity="center_horizontal"/>
+
+            <LinearLayout
+                android:id="@+id/ll_tel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tel_number"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <EditText
+                    android:id="@+id/et_tel"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/hint_input_tel"
+                    android:inputType="number"
+                    android:maxLength="11"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:id="@+id/ll_verify_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/verify_code"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <EditText
+                    android:id="@+id/et_verify_code"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/hint_input_verify_code" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/get_verify_code"
+                    android:textColor="@color/font_color_three"
+                    android:textSize="@dimen/dd_dimen_24px" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:id="@+id/ll_psw"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <EditText
+                    android:id="@+id/et_psw"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/hint_input_psw"
+                    android:maxLength="19"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_pwd"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <EditText
+                    android:id="@+id/et_confirm_psw"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/hint_input_confirm_pwd"
+                    android:layout_marginLeft="@dimen/dd_dimen_30px"
+                    android:maxLength="19"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brand_id"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <TextView
+                    android:id="@+id/tv_brand"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/sel_brand_id" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/series_id"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <TextView
+                    android:id="@+id/tv_series"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/sel_series_id" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/year_style"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <TextView
+                    android:id="@+id/tv_year_style"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/sel_year_style" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_hor1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/ll_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dd_dimen_96px"
+                android:background="@color/font_color_four"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dd_dimen_30px"
+                android:paddingRight="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:layout_width="@dimen/dd_dimen_100px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/version"
+                    android:textColor="@color/font_color_one"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    style="@style/tv_sel_vehicle"
+                    android:hint="@string/sel_version" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_agreement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dd_dimen_30px">
+
+                <TextView
+                    android:id="@+id/tv_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agreement_register"
+                    android:textColor="@color/font_color_five"
+                    android:textSize="@dimen/dd_dimen_24px" />
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dd_dimen_88px"
+                    android:layout_marginTop="@dimen/dd_dimen_30px"
+                    android:background="@drawable/bg_btn"
+                    android:gravity="center"
+                    android:text="@string/confirm"
+                    android:textColor="@color/font_color_four"
+                    android:textSize="@dimen/dd_dimen_24px" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
