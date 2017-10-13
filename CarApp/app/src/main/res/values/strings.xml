@@ -10,6 +10,7 @@
     <string name="third_login">第三方登录</string>
     <string name="hint_input_account">请输入账号</string>
     <string name="hint_input_psw">请输入密码</string>
+    <string name="tip_login_tel">注：普通用户需要手机号注册，修理厂需要系统分配的账号登录</string>
 
     <string name="register">注册</string>
     <string name="tel_number">手机号</string>
@@ -32,6 +33,9 @@
     <string name="error_tel_format">手机号格式不正确</string>
     <string name="error_psw_format">密码格式不正确</string>
     <string name="error_psw_not_equal">两次密码输入不一致</string>
+    <string name="send_succ">发送成功</string>
+    <string name="send_fail">发送失败</string>
+    <string name="verify_code_fial">短信验证码不正确</string>
 
 
     <string name="modify_psw">修改密码</string>

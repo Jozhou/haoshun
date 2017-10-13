@@ -60,13 +60,25 @@
                 android:inputType="textPassword"/>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="@dimen/font_size_four"
+            android:text="@string/tip_login_tel"
+            android:paddingLeft="@dimen/dd_dimen_30px"
+            android:paddingRight="@dimen/dd_dimen_30px"
+            android:layout_marginTop="@dimen/dd_dimen_30px"
+            android:layout_below="@id/ll_psw"/>
+
         <Button
             android:id="@+id/btn_login"
             style="@style/btn_style"
             android:text="@string/login"
             android:layout_marginLeft="@dimen/dd_dimen_30px"
             android:layout_marginRight="@dimen/dd_dimen_30px"
-            android:layout_below="@id/ll_psw"
+            android:layout_below="@id/tv_tip"
             android:layout_marginTop="@dimen/dd_dimen_30px"/>
 
         <TextView

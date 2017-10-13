@@ -78,7 +78,9 @@
                 <EditText
                     android:id="@+id/et_verify_code"
                     style="@style/tv_sel_vehicle"
-                    android:hint="@string/hint_input_verify_code" />
+                    android:hint="@string/hint_input_verify_code"
+                    android:inputType="number"
+                    android:maxLength="8"/>
 
                 <TextView
                     android:id="@+id/tv_get_code"

@@ -4,6 +4,8 @@ public class Config extends com.corelibrary.context.Config {
 	
 	private static final String KEY_IS_DEBUG = "IS_DEBUG";
 	private static final String KEY_IS_STORELOG = "IS_STORELOG";
+
+	public static final String COUNTRY_CODE = "86";
 	
 	/**   
 	 * 开启debug
