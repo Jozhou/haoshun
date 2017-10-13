@@ -72,21 +72,15 @@ public class FrameDetailActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.rb_config) {
-                    mAdater.setData(mData);
-                    mAdater.notifyDataSetChanged();
                     lvConfig.setVisibility(View.VISIBLE);
                     lvOem.setVisibility(View.GONE);
                     lvParts.setVisibility(View.GONE);
                 } else if (checkedId == R.id.rb_oem) {
                     lvConfig.setVisibility(View.GONE);
-                    mAdater.setData(null);
-                    mAdater.notifyDataSetChanged();
                     lvOem.setVisibility(View.VISIBLE);
                     lvParts.setVisibility(View.GONE);
                 } else if (checkedId == R.id.rb_conversation) {
                     lvConfig.setVisibility(View.GONE);
-                    mAdater.setData(null);
-                    mAdater.notifyDataSetChanged();
                     lvOem.setVisibility(View.GONE);
                     lvParts.setVisibility(View.VISIBLE);
                 }
@@ -97,7 +91,7 @@ public class FrameDetailActivity extends BaseActivity {
     @Override
     protected void onApplyData() {
         super.onApplyData();
-        mAdater = new FrameNumAdapter(this);
+        mAdater = new FrameNumAdapter(this, mData);
         lvConfig.setAdapter(mAdater);
 
         rgTabs.check(R.id.rb_config);
