@@ -5,27 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/fl_ad"
+    <RelativeLayout
+        android:id="@+id/rl_ad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.corelibrary.view.viewflow.CircleFlowIndicator
-            android:id="@+id/viewflowindic"
-            android:padding="10dip"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:activeColor="#ffffff"
-            app:activeType="fill"
-            app:inactiveColor="#4cffffff"
-            app:inactiveType="fill"
-            app:radius="3dip"/>
+
         <com.corelibrary.view.viewflow.ViewFlow
             android:id="@+id/viewflow"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             app:sidebuffer="7"></com.corelibrary.view.viewflow.ViewFlow>
-    </FrameLayout>
+
+        <com.corelibrary.view.viewflow.CircleFlowIndicator
+            android:id="@+id/viewflowindic"
+            android:padding="10dip"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:activeColor="#ffffff"
+            app:activeType="fill"
+            app:inactiveColor="#4cffffff"
+            app:inactiveType="fill"
+            app:radius="3dip"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dd_dimen_30px"/>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"

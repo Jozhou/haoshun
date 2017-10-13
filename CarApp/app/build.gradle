@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion android_compileSdkVersion
+    buildToolsVersion android_buildToolsVersion
     defaultConfig {
         applicationId "com.carapp"
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion android_minSdkVersion
+        targetSdkVersion android_targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

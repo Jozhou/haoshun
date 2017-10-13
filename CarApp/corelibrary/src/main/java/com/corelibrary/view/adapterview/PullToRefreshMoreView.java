@@ -324,10 +324,6 @@ public abstract class PullToRefreshMoreView<T extends MultiItemEntity> extends L
      */
     protected void onLoadSucc(PageType pagetype) {
         ArrayList<T> data = mModelData.getArray();
-        boolean isLastPage  = mModelData.isLastPage();
-        if(pagetype != PageType.CachePage) {
-            onEndLoad(isLastPage, pagetype, true);
-        }
         if(pagetype == PageType.CachePage || pagetype == PageType.FirstPage) {
             if (mOnFilterListener != null) {
                 mAdapter.setNewData(mOnFilterListener.onFilterFirst(data));
@@ -340,6 +336,10 @@ public abstract class PullToRefreshMoreView<T extends MultiItemEntity> extends L
             } else {
                 mAdapter.addData(data);
             }
+        }
+        boolean isLastPage  = mModelData.isLastPage();
+        if(pagetype != PageType.CachePage) {
+            onEndLoad(isLastPage, pagetype, true);
         }
         gotoSuccessful();
         if (onLoadDataListener != null) {
@@ -414,6 +414,12 @@ public abstract class PullToRefreshMoreView<T extends MultiItemEntity> extends L
                 }
             } else {
                 mAdapter.loadMoreFail();
+            }
+        } else if (pageType == PageType.FirstPage) {
+            if (success) {
+                if(isLastPage) {
+                    mAdapter.loadMoreEnd();
+                }
             }
         }
     }

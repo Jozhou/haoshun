@@ -29,11 +29,14 @@ public class Account extends BaseEntry {
 	public String nickname = "";
 	public int sex; // 0/1 男／女
 	public String brand_id = "";
+	public String brand_name = "";
 	public String series_id = "";
+	public String series_name = "";
 	public String year_style = "";
 	public String version = "";
 	public String pwd = "";
     public String tel = "";
+	public String carcode = "";
 
 	public String getSexStr() {
 		return sex == 0? "男" : "女";
@@ -78,17 +81,24 @@ public class Account extends BaseEntry {
 	 * 登录
 	 */
 	public void login(int user_id, String imageurl,
-			String nickname, int sex, String brand_id, String series_id, String year_style, String version, String pwd, String tel) {
+			String nickname, int sex, String brand_id,
+			String brand_name, String series_id,
+			String series_name, String year_style,
+			String version, String pwd, String tel,
+					  String carcode) {
 		this.user_id = user_id;
 		this.imageurl = imageurl;
 		this.nickname = nickname;
 		this.sex = sex;
 		this.brand_id = brand_id;
+		this.brand_name = brand_name;
 		this.series_id = series_id;
+		this.series_name = series_name;
 		this.year_style = year_style;
 		this.version = version;
 		this.pwd = pwd;
         this.tel = tel;
+		this.carcode = carcode;
 
 		save();
 	}
@@ -132,11 +142,14 @@ public class Account extends BaseEntry {
 		this.nickname = "";
 		this.sex = 0;
 		this.brand_id = "";
+		this.brand_name = "";
 		this.series_id = "";
+		this.series_name = "";
 		this.year_style = "";
 		this.version = "";
 		this.pwd = "";
         this.tel = "";
+		this.carcode = "";
 		// 清除账号信息
 		DataUtils.removeAccount();
 		// 清除缓存

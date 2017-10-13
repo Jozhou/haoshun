@@ -17,7 +17,7 @@ public abstract class BaseArrayOperater<T> extends BaseOperater implements IArra
 	protected static final int PAGESIZE = 15;
 	protected static final String KEY_PAGENO = "page";
 	protected static final String KEY_PAGESIZE = "size";
-	protected static final String KEY_TOTALCOUNT = "totalCount";
+	protected static final String KEY_TOTALCOUNT = "count";
 	
 	protected static final String CACHE_FOLDER = "json";
 	
@@ -158,11 +158,12 @@ public abstract class BaseArrayOperater<T> extends BaseOperater implements IArra
 	protected void parsePagerData(JSONObject response) {
 		int totalCount = -1;
 		try {
-			totalCount = response.optInt(KEY_TOTALCOUNT, -1);
+			totalCount = response.getJSONObject("content").optInt(KEY_TOTALCOUNT, -1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			totalCount = -1;
 		}
+		mDataEntry.setIndex(mPageIndex * PAGESIZE);
 		mDataEntry.setTotalCount(totalCount);
 	}
 	

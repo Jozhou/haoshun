@@ -11,6 +11,7 @@
         android:orientation="horizontal"
         android:background="@color/white"
         android:paddingTop="@dimen/dd_dimen_10px"
+        android:paddingBottom="@dimen/dd_dimen_10px"
         android:layout_alignParentBottom="true">
         <RadioButton
             android:id="@+id/rb_home"

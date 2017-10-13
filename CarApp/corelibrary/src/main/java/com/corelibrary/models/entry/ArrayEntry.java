@@ -8,9 +8,14 @@ public class ArrayEntry<T> extends BaseEntry {
 	
 	protected int totalCount = -1;
 	protected ArrayList<T> array;
-	
+	protected int index = 0;
+
 	public void setTotalCount(int v) {
 		totalCount = v;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	
 	public int getTotalCount() {
@@ -30,7 +35,7 @@ public class ArrayEntry<T> extends BaseEntry {
 	 * @return
 	 */
 	public boolean isLastPage() {
-		return array.size() <= 0;
+		return index >= totalCount;
 	}
 	
 }

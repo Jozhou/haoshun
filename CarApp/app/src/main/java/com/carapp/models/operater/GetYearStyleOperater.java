@@ -32,7 +32,7 @@ public class GetYearStyleOperater extends BaseArrayOperater<VehicleItemEntry> {
     protected ArrayEntry<VehicleItemEntry> parseJsonObject(JSONObject jo) {
         ArrayEntry<VehicleItemEntry> arrayEntry = new ArrayEntry<>();
         try {
-            JSONArray array = jo.getJSONArray("content");
+            JSONArray array = jo.getJSONObject("content").getJSONArray("modelyear");
             for (int i = 0; i < array.length(); i ++) {
                 JSONObject jsonObject = array.getJSONObject(i);
                 VehicleItemEntry entry = new VehicleItemEntry();

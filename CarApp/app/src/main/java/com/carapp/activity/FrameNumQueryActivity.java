@@ -2,14 +2,23 @@ package com.carapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.carapp.R;
+import com.carapp.context.IntentCode;
+import com.carapp.models.entry.NameValueEntry;
+import com.carapp.models.operater.GetFrameNumOperater;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.models.http.BaseOperater;
+import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/29.
@@ -47,8 +56,29 @@ public class FrameNumQueryActivity extends BaseActivity {
         super.onClick(v);
         int id = v.getId();
         if (id == R.id.btn_query) {
-            Intent intent = new Intent(this, FrameDetailActivity.class);
-            startActivity(intent);
+            onQueryFrameNum();
         }
+    }
+
+    private void onQueryFrameNum() {
+        String vim = etFrameNum.getText().toString();
+        if (TextUtils.isEmpty(vim) || vim.length() != 17) {
+            DialogUtils.showToastMessage(R.string.hint_input_frame_num);
+            return;
+        }
+        final GetFrameNumOperater operater = new GetFrameNumOperater(this);
+        operater.setParams(vim);
+        operater.onReq(new BaseOperater.RspListener() {
+            @Override
+            public void onRsp(boolean success, Object obj) {
+                if (success) {
+                    List<NameValueEntry> mdata = operater.getData();
+                    Intent intent = new Intent(FrameNumQueryActivity.this, FrameDetailActivity.class);
+                    intent.putStringArrayListExtra(IntentCode.INTENT_FRAME_NUM_LIST, (ArrayList)mdata);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 }

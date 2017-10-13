@@ -6,42 +6,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.carapp.R;
+import com.carapp.models.entry.NameValueEntry;
 import com.corelibrary.utils.DeviceUtils;
 
 import java.util.List;
 
-public class AdAdapter extends BaseAdapter {
+public class FrameNumAdapter extends BaseAdapter {
 
 	private LayoutInflater mInflater;
-	private List<String> mData;
+	private List<NameValueEntry> mData;
 	private Context mContext;
 
-	public AdAdapter(Context context, List<String> data) {
+	public FrameNumAdapter(Context context) {
+		this.mContext = context;
+		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+
+	public FrameNumAdapter(Context context, List<NameValueEntry> data) {
 		this.mContext = context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.mData = data;
 	}
 
-	@Override
-	public int getCount() {
-		if (mData == null || mData.isEmpty()) {
-			return 0;
-		}
-		return Integer.MAX_VALUE;
+	public void setData(List<NameValueEntry> data) {
+		this.mData = data;
 	}
 
 	@Override
-	public String getItem(int position) {
-		return mData.get(position % mData.size());
+	public int getCount() {
+		if (mData == null) {
+			return 0;
+		}
+		return mData.size();
+	}
+
+	@Override
+	public NameValueEntry getItem(int position) {
+		return mData.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		return position % mData.size();
+		return position;
 	}
 
 	@Override
@@ -49,24 +59,22 @@ public class AdAdapter extends BaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.item_ad, null);
-			holder.ivAd = (ImageView) convertView.findViewById(R.id.iv_ad);
-			int width = DeviceUtils.getScreenWidth();
-			int height = width/3;
-			ViewGroup.LayoutParams params = holder.ivAd.getLayoutParams();
-			params.width = width;
-			params.height = height;
-			holder.ivAd.setLayoutParams(params);
+			convertView = mInflater.inflate(R.layout.item_frame_num, null);
+			holder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
+			holder.tvValue = (TextView) convertView.findViewById(R.id.tv_value);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Glide.with(mContext).load(getItem(position)).into(holder.ivAd);
+		final NameValueEntry entry = getItem(position);
+		holder.tvName.setText(entry.name);
+		holder.tvValue.setText(entry.value);
 		return convertView;
 	}
 
 	static class ViewHolder {
-		ImageView ivAd;
+		TextView tvName;
+		TextView tvValue;
 	}
 
 }

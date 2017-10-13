@@ -26,6 +26,10 @@ public class SimpleListItemDecoration extends RecyclerView.ItemDecoration {
         a.recycle();
     }
 
+    public SimpleListItemDecoration(Context context, int resId) {
+        mDivider = context.getResources().getDrawable(resId);
+    }
+
     /**
      * Sets the {@link Drawable} for this divider.
      *

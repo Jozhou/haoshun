@@ -2,7 +2,6 @@ package com.carapp.models.operater;
 
 import android.content.Context;
 
-import com.android.minivolley.Request;
 import com.carapp.common.data.Account;
 import com.corelibrary.models.http.BaseOperater;
 
@@ -49,10 +48,13 @@ public class LoginOperater extends BaseOperater {
             int sex = response.getInt("sex");
             JSONObject vehicleObj = response.getJSONObject("vertical");
             String brand_id = vehicleObj.getString("brand_id");
+            String brand_name = vehicleObj.getString("brand_name");
             String series_id = vehicleObj.getString("series_id");
+            String series_name = vehicleObj.getString("series_name");
             String year_style = vehicleObj.getString("year_style");
             String version = vehicleObj.getString("version");
-            Account.get().login(user_id, imageurl, nickname, sex, brand_id, series_id, year_style, version, pwd, tel);
+            String carcode = vehicleObj.getString("carcode");
+            Account.get().login(user_id, imageurl, nickname, sex, brand_id, brand_name, series_id, series_name, year_style, version, pwd, tel, carcode);
         } catch (JSONException e) {
             e.printStackTrace();
         }

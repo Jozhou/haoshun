@@ -2,8 +2,13 @@ package com.carapp.fragment;
 
 import com.carapp.R;
 import com.carapp.models.adapter.AdAdapter;
+import com.carapp.models.operater.GetNewsOperater;
+import com.carapp.view.MainHeaderView;
+import com.carapp.view.NewsListView;
 import com.corelibrary.fragment.base.BaseFragment;
+import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ViewInject.ViewInject;
+import com.corelibrary.view.decoration.SimpleListItemDecoration;
 import com.corelibrary.view.viewflow.CircleFlowIndicator;
 import com.corelibrary.view.viewflow.ViewFlow;
 
@@ -13,11 +18,10 @@ import com.corelibrary.view.viewflow.ViewFlow;
 
 public class MainFragment extends BaseFragment {
 
+    @ViewInject("lv_news")
+    private NewsListView lvNews;
 
-    @ViewInject("viewflow")
-    private ViewFlow viewflow;
-    @ViewInject("viewflowindic")
-    private CircleFlowIndicator viewflowindic;
+    private MainHeaderView mainHeaderView;
 
     @Override
     protected int getContentResId() {
@@ -27,11 +31,10 @@ public class MainFragment extends BaseFragment {
     @Override
     protected void onApplyData() {
         super.onApplyData();
-        viewflow.setAdapter(new AdAdapter(getActivity()));
-        viewflow.setFlowIndicator(viewflowindic);
-        viewflow.setSideBuffer(7);
-        viewflow.setSelection(7 * 1000); // 设置初始位置
-        viewflow.startAutoFlowTimer();
-
+        mainHeaderView = new MainHeaderView(mContext);
+        lvNews.addHeaderView(mainHeaderView);
+        lvNews.addItemDecoration(new SimpleListItemDecoration(mContext, R.drawable.divider_latest_news));
+        lvNews.refresh();
     }
+
 }

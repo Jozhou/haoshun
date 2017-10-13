@@ -110,7 +110,7 @@ public class RegisterActivity extends BaseActivity {
         }
         Intent intent = new Intent(this, SelVehicleActivity.class);
         intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_SERIES);
-        intent.putExtra(IntentCode.INTENT_BRAND_ID, "137");
+        intent.putExtra(IntentCode.INTENT_BRAND_ID, brand.id);
         startActivityForResult(intent, SelVehicleActivity.SEL_SERIES);
     }
 

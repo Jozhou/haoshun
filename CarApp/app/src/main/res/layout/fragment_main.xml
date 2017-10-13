@@ -68,11 +68,12 @@
             android:textColor="@color/white"
             android:textSize="@dimen/dd_dimen_34px"
             android:visibility="gone" />
-
     </RelativeLayout>
 
-    <com.carapp.view.MainHeaderView
+    <com.carapp.view.NewsListView
+        android:id="@+id/lv_news"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.carapp.view.MainHeaderView>
+        android:layout_height="match_parent"
+        android:background="@color/font_color_two"></com.carapp.view.NewsListView>
 
 </LinearLayout>

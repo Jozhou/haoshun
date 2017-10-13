@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide;
 import com.carapp.R;
 import com.carapp.activity.PersonalInfoActivity;
 import com.carapp.common.data.Account;
+import com.carapp.view.NewsListView;
 import com.corelibrary.fragment.base.BaseFragment;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.CircleImageView;
@@ -26,7 +27,6 @@ public class MineFragment extends BaseFragment {
     private TextView tvTel;
     @ViewInject("iv_head")
     private CircleImageView ivHead;
-
 
     @Override
     protected int getContentResId() {
