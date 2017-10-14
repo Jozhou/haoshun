@@ -3,6 +3,8 @@ package com.carapp.common.data;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.carapp.R;
+import com.carapp.application.CarApplication;
 import com.carapp.utils.DataUtils;
 import com.corelibrary.activity.base.BaseActivity;
 import com.corelibrary.cache.data.CacheManager;
@@ -27,7 +29,7 @@ public class Account extends BaseEntry {
 	public int user_id;
 	public String imageurl = "";
 	public String nickname = "";
-	public int sex; // 0/1 男／女
+	public int sex; // 1/2 男／女
 	public String brand_id = "";
 	public String brand_name = "";
 	public String series_id = "";
@@ -38,8 +40,13 @@ public class Account extends BaseEntry {
     public String tel = "";
 	public String carcode = "";
 
-	public String getSexStr() {
-		return sex == 0? "男" : "女";
+	public CharSequence getSexStr() {
+		if (sex == 1) {
+			return CarApplication.getInstance().getText(R.string.male);
+		} else if (sex == 2) {
+			return CarApplication.getInstance().getText(R.string.female);
+		}
+		return CarApplication.getInstance().getText(R.string.other);
 	}
 
 	private Account() {
@@ -101,6 +108,26 @@ public class Account extends BaseEntry {
 		this.carcode = carcode;
 
 		save();
+	}
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+		DataUtils.setImageurl(imageurl);
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+		DataUtils.setNickname(nickname);
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+		DataUtils.setSex(sex);
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+		DataUtils.setPwd(pwd);
 	}
 
 	public void logout(final Context context) {

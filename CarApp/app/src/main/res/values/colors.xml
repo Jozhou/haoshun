@@ -20,4 +20,6 @@
     <color name="line_color2">@color/font_color_five</color>
 
     <color name="bg_title">@color/font_color_three</color>
+    
+    <color name="bg_transparent">#30000000</color>
 </resources>

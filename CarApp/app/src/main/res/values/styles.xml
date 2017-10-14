@@ -157,4 +157,13 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="tv_pop_confirm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dd_dimen_88px</item>
+        <item name="android:textColor">@color/font_color_three</item>
+        <item name="android:textSize">@dimen/font_size_two</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 </resources>

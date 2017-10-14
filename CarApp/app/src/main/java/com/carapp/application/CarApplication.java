@@ -2,7 +2,9 @@ package com.carapp.application;
 
 import android.app.Application;
 
+import com.carapp.utils.imagepicker.GlideImageLoader;
 import com.corelibrary.application.AppContext;
+import com.lzy.imagepicker.ImagePicker;
 import com.mob.MobSDK;
 
 /**
@@ -20,6 +22,7 @@ public class CarApplication extends Application {
         AppContext.init(this);
         // 通过代码注册你的AppKey和AppSecret
         MobSDK.init(this, "21419b496759d", "64a01522511dd70afcf81f928949e400");
+        ImagePicker.getInstance().setImageLoader(new GlideImageLoader());
     }
 
     public static CarApplication getInstance() {

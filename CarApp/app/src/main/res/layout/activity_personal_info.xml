@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/font_color_two">
+    android:background="@color/font_color_two"
+    android:id="@+id/root">
 
     <com.corelibrary.view.TitleBar
         android:id="@+id/titlebar"

@@ -1,13 +1,18 @@
 package com.carapp.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.carapp.R;
 import com.carapp.common.data.Account;
+import com.carapp.models.operater.UpdateNickOperater;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.models.http.BaseOperater;
+import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
 
@@ -23,6 +28,8 @@ public class ModifyNickActivity extends BaseActivity {
     private EditText etNick;
     @ViewInject(value = "iv_clear", setClickListener = true)
     private ImageView ivClear;
+    @ViewInject(value = "btn_save", setClickListener = true)
+    private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,32 @@ public class ModifyNickActivity extends BaseActivity {
         int id = v.getId();
         if (id == R.id.iv_clear) {
             etNick.setText("");
+        } else if (id == R.id.btn_save) {
+            save();
         }
+    }
+
+    private void save() {
+        final String nick = etNick.getText().toString().trim();
+        if (TextUtils.isEmpty(nick)) {
+            DialogUtils.showToastMessage(R.string.hint_input_nickname);
+        }
+        if (TextUtils.equals(nick, Account.get().nickname)) {
+            finish();
+        }
+        final UpdateNickOperater operater = new UpdateNickOperater(this);
+        operater.setParams(nick);
+        operater.onReq(new BaseOperater.RspListener() {
+            @Override
+            public void onRsp(boolean success, Object obj) {
+                if (success) {
+                    DialogUtils.showToastMessage(operater.getMsg());
+                    Account.get().setNickname(nick);
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        });
+
     }
 }

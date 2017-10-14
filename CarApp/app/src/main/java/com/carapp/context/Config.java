@@ -1,11 +1,17 @@
 package com.carapp.context;
 
+import com.carapp.R;
+import com.corelibrary.application.AppContext;
+
 public class Config extends com.corelibrary.context.Config {
 	
 	private static final String KEY_IS_DEBUG = "IS_DEBUG";
 	private static final String KEY_IS_STORELOG = "IS_STORELOG";
 
 	public static final String COUNTRY_CODE = "86";
+	public static final int HEAD_WIDTH = AppContext.get().getResources().getDimensionPixelSize(R.dimen.dd_dimen_96px);
+
+	public static final int HEAD_FOCUS_WIDTH = AppContext.get().getResources().getDimensionPixelSize(R.dimen.dd_dimen_400px);
 	
 	/**   
 	 * 开启debug

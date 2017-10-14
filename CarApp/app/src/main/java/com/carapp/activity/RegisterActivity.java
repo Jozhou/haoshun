@@ -235,13 +235,13 @@ public class RegisterActivity extends BaseActivity {
     public void register() {
         String tel = etTel.getText().toString().trim();
         String psw = etPsw.getText().toString().trim();
-        RegisterOperater operater = new RegisterOperater(this);
+        final RegisterOperater operater = new RegisterOperater(this);
         operater.setParams("1", tel, psw, version.carcode);
         operater.onReq(new BaseOperater.RspListener() {
             @Override
             public void onRsp(boolean success, Object obj) {
                 if (success) {
-                    DialogUtils.showToastMessage(R.string.register_succ);
+                    DialogUtils.showToastMessage(operater.getMsg());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

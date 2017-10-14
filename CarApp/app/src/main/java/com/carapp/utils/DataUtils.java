@@ -102,5 +102,21 @@ public class DataUtils {
 		PreferenceUtils.remove(KEY_ACCOUNT_TEL);
 		PreferenceUtils.remove(KEY_ACCOUNT_CARCODE);
 	}
+
+	public static void setImageurl(String imageurl) {
+		PreferenceUtils.putString(KEY_ACCOUNT_IMAGE, imageurl);
+	}
+
+	public static void setNickname(String nickname) {
+		PreferenceUtils.putString(KEY_ACCOUNT_NICK, nickname);
+	}
+
+	public static void setSex(int sex) {
+		PreferenceUtils.putInt(KEY_ACCOUNT_SEX, sex);
+	}
+
+	public static void setPwd(String pwd) {
+		PreferenceUtils.putString(KEY_ACCOUNT_PWD, pwd);
+	}
 	
 }

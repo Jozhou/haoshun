@@ -90,6 +90,14 @@
     <string name="modify_nick">修改昵称</string>
     <string name="hint_input_nickname">请输入昵称</string>
 
+    <string name="take_photo">拍照</string>
+    <string name="local_pic">本地图片</string>
+    <string name="cancel">取消</string>
+
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="other">其他</string>
+
     <!-- 个人中心 end-->
 
     <!-- 个人车辆 start-->

@@ -55,6 +55,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
     compile project(':corelibrary')
+    compile project(':imagepicker')
     compile(name:'SMSSDK-3.0.0',ext:'aar')
-    compile(name:'SMSSDKGUI-3.0.0',ext:'aar')
+//    compile(name:'SMSSDKGUI-3.0.0',ext:'aar')
 }
