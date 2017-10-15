@@ -60,7 +60,7 @@
         </LinearLayout>
 
         <View
-            style="@style/line_ver2"
+            style="@style/line_ver1"
             android:layout_height="match_parent"/>
 
         <LinearLayout
@@ -76,7 +76,7 @@
         </LinearLayout>
 
         <View
-            style="@style/line_ver2"
+            style="@style/line_ver1"
             android:layout_height="match_parent"/>
 
         <LinearLayout
@@ -93,7 +93,7 @@
     </LinearLayout>
 
     <View
-        style="@style/line_hor2"
+        style="@style/line_hor1"
         android:layout_width="match_parent"/>
 
     <LinearLayout
@@ -115,7 +115,7 @@
         </LinearLayout>
 
         <View
-            style="@style/line_ver2"
+            style="@style/line_ver1"
             android:layout_height="match_parent"/>
 
         <LinearLayout
@@ -131,7 +131,7 @@
         </LinearLayout>
 
         <View
-            style="@style/line_ver2"
+            style="@style/line_ver1"
             android:layout_height="match_parent"/>
 
         <View

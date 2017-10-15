@@ -28,6 +28,13 @@ public class MineFragment extends BaseFragment {
     @ViewInject("iv_head")
     private CircleImageView ivHead;
 
+    @ViewInject(value = "ll_conversation_query", setClickListener = true)
+    private View vConversation;
+    @ViewInject(value = "ll_my_coll", setClickListener = true)
+    private View vColl;
+    @ViewInject(value = "ll_settings", setClickListener = true)
+    private View vSettings;
+
     @Override
     protected int getContentResId() {
         return R.layout.fragment_mine;
@@ -36,12 +43,6 @@ public class MineFragment extends BaseFragment {
     @Override
     protected void onApplyData() {
         super.onApplyData();
-        tvName.setText(Account.get().nickname);
-        tvTel.setText(Account.get().tel);
-        Glide.with(this).load(Account.get().imageurl)
-                .placeholder(R.drawable.head_icon)
-                .error(R.drawable.head_icon)
-                .into(ivHead);
     }
 
     @Override
@@ -52,5 +53,21 @@ public class MineFragment extends BaseFragment {
             Intent intent = new Intent(mContext, PersonalInfoActivity.class);
             mContext.startActivity(intent);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshHead();
+    }
+
+    private void refreshHead() {
+        tvName.setText(Account.get().nickname);
+        tvTel.setText(Account.get().tel);
+        Glide.with(mContext).load(Account.get().imageurl)
+                .placeholder(R.drawable.head_icon)
+                .error(R.drawable.head_icon)
+                .dontAnimate()
+                .into(ivHead);
     }
 }

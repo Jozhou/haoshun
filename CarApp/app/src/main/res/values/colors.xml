@@ -15,6 +15,8 @@
     <!-- 五号颜色 -->
     <color name="font_color_five">#9d9d9d</color>
 
+    <color name="line_mine_item">#dfdfdf</color>
+
     <!-- 线条颜色 -->
     <color name="line_color1">@color/font_color_two</color>
     <color name="line_color2">@color/font_color_five</color>

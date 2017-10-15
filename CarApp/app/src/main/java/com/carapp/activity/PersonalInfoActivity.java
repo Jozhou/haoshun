@@ -156,8 +156,8 @@ public class PersonalInfoActivity extends BaseActivity {
         tvSex.setText(Account.get().getSexStr());
         tvAccount.setText(Account.get().tel);
         tvBindTel.setText(Account.get().tel);
-        tvBrand.setText(Account.get().brand_id);
-        tvSeries.setText(Account.get().series_id);
+        tvBrand.setText(Account.get().brand_name);
+        tvSeries.setText(Account.get().series_name);
         tvYearStyle.setText(Account.get().year_style);
         tvVersion.setText(Account.get().version);
     }

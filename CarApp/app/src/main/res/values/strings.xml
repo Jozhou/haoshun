@@ -2,7 +2,8 @@
     <string name="app_name">好顺</string>
 
     <!-- 个人 start -->
-    <string name="login">登录</string>
+    <string name="login">登&#160;&#160;录</string>
+    <string name="title_login">登录</string>
     <string name="account">账号</string>
     <string name="password">密码</string>
     <string name="no_account_register">无账号请注册</string>
@@ -19,7 +20,7 @@
     <string name="hint_input_tel">请输入手机号</string>
     <string name="hint_input_verify_code">请输入验证码</string>
     <string name="agreement_register">注册即表示同意《好顺自动变速箱油注册协议》</string>
-    <string name="confirm">确认</string>
+    <string name="confirm">确&#160;&#160;认</string>
     <string name="confirm_pwd">确认密码</string>
     <string name="hint_input_confirm_pwd">请再次输入密码</string>
     <string name="brand_id">车牌</string>
@@ -43,7 +44,7 @@
     <string name="hint_input_username">请输入用户名</string>
     <string name="hint_input_new_psw">请输入新的密码</string>
     <string name="hint_re_input_new_psw">请再次输入新的密码</string>
-    <string name="save">保存</string>
+    <string name="save">保&#160;&#160;存</string>
 
     <string name="personal_info">个人资料</string>
     <string name="nick_name">昵称</string>
@@ -70,7 +71,7 @@
     <!-- 主页 end -->
 
     <!--车架号查询 start -->
-    <string name="query">查询</string>
+    <string name="query">查&#160;&#160;询</string>
     <string name="hint_input_frame_num">请输入17位车架号</string>
     <string name="query_detail">查询详情</string>
     <string name="configuration">配置</string>
@@ -78,7 +79,7 @@
     <string name="conversation_parts">养护件</string>
     <string name="tip_query">车架号查询仅供参考，具体查询以养护查询为准</string>
     <string name="hint_input_error_report">请输入错误反馈</string>
-    <string name="submit">提交</string>
+    <string name="submit">提&#160;&#160;交</string>
 
     <!--车架号查询 end -->
 

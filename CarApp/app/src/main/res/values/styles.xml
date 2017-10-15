@@ -9,6 +9,11 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="SplashTheme" parent="@style/AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
     <!-- 横线 -->
     <style name="line_hor1">
         <item name="android:background">@color/line_color1</item>
@@ -17,6 +22,11 @@
 
     <style name="line_hor2">
         <item name="android:background">@color/line_color2</item>
+        <item name="android:layout_height">@dimen/dd_dimen_2px</item>
+    </style>
+
+    <style name="line_hor3">
+        <item name="android:background">@color/line_mine_item</item>
         <item name="android:layout_height">@dimen/dd_dimen_2px</item>
     </style>
 
@@ -62,12 +72,13 @@
 
     <style name="mine_ll_item">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/dd_dimen_88px</item>
+        <item name="android:layout_height">@dimen/dd_dimen_96px</item>
         <item name="android:background">@drawable/bg_mine_item</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingLeft">@dimen/dd_dimen_30px</item>
         <item name="android:paddingRight">@dimen/dd_dimen_30px</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
     </style>
 
     <style name="mine_ll_item_txt">
@@ -75,7 +86,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/font_color_one</item>
-        <item name="android:textSize">@dimen/dd_dimen_24px</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
     </style>
 
     <style name="tv_sel_vehicle">
@@ -83,7 +94,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/font_color_one</item>
-        <item name="android:textSize">@dimen/dd_dimen_24px</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
@@ -92,7 +103,7 @@
     <style name="ll_personal_info">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dd_dimen_88px</item>
-        <item name="android:background">@color/font_color_four</item>
+        <item name="android:background">@drawable/bg_selector</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingLeft">@dimen/dd_dimen_30px</item>
@@ -123,7 +134,7 @@
         <item name="android:layout_width">@dimen/dd_dimen_100px</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/font_color_one</item>
-        <item name="android:textSize">@dimen/font_size_two</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -133,7 +144,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/font_color_one</item>
-        <item name="android:textSize">@dimen/font_size_two</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -146,6 +157,8 @@
         <item name="android:textSize">@dimen/font_size_two</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
+        <item name="android:paddingLeft">@dimen/dd_dimen_30px</item>
+        <item name="android:paddingRight">@dimen/dd_dimen_30px</item>
     </style>
 
     <style name="layout_input">

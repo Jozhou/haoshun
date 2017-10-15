@@ -27,29 +27,16 @@
 
         <LinearLayout
             android:id="@+id/ll_username"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dd_dimen_96px"
-            android:background="@color/font_color_four"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dd_dimen_30px"
-            android:paddingRight="@dimen/dd_dimen_30px"
+            style="@style/layout_input"
             android:layout_below="@id/iv_icon">
             <TextView
-                android:layout_width="@dimen/dd_dimen_100px"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name"
-                android:textSize="@dimen/dd_dimen_24px"
-                android:textColor="@color/font_color_one"/>
+                style="@style/tv_input_name"
+                android:text="@string/tel_number"/>
 
             <EditText
                 android:id="@+id/et_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_input_username"
-                android:background="@null"
-                android:textSize="@dimen/dd_dimen_24px"
-                android:textColor="@color/font_color_one"
-                android:singleLine="true"/>
+                style="@style/et_input_value"
+                android:hint="@string/hint_input_tel"/>
         </LinearLayout>
 
         <View
@@ -60,51 +47,35 @@
 
         <LinearLayout
             android:id="@+id/ll_verify_code"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dd_dimen_96px"
-            android:background="@color/font_color_four"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dd_dimen_30px"
-            android:paddingRight="@dimen/dd_dimen_30px"
+            style="@style/layout_input"
             android:layout_below="@id/v_line1">
             <TextView
-                android:layout_width="@dimen/dd_dimen_100px"
-                android:layout_height="wrap_content"
-                android:text="@string/verify_code"
-                android:textSize="@dimen/dd_dimen_24px"
-                android:textColor="@color/font_color_one"/>
+                style="@style/tv_input_name"
+                android:text="@string/verify_code"/>
 
             <EditText
                 android:id="@+id/et_verify_code"
+                style="@style/et_input_value"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/hint_input_verify_code"
-                android:background="@null"
-                android:textSize="@dimen/dd_dimen_24px"
-                android:textColor="@color/font_color_one"
-                android:singleLine="true"/>
+                android:hint="@string/hint_input_verify_code"/>
 
             <TextView
                 android:id="@+id/tv_get_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/get_verify_code"
-                android:textSize="@dimen/dd_dimen_24px"
+                android:textSize="@dimen/font_size_four"
                 android:textColor="@color/font_color_three"
                 android:singleLine="true"/>
         </LinearLayout>
 
         <EditText
             android:id="@+id/et_new_psw"
-            android:layout_width="match_parent"
+            style="@style/et_input_value"
             android:layout_height="@dimen/dd_dimen_96px"
             android:hint="@string/hint_input_new_psw"
             android:background="@color/font_color_four"
-            android:textSize="@dimen/dd_dimen_24px"
-            android:textColor="@color/font_color_one"
-            android:singleLine="true"
-            android:gravity="center_vertical"
             android:layout_below="@id/ll_verify_code"
             android:paddingLeft="@dimen/dd_dimen_30px"
             android:paddingRight="@dimen/dd_dimen_30px"
@@ -119,14 +90,10 @@
 
         <EditText
             android:id="@+id/et_re_new_psw"
-            android:layout_width="match_parent"
+            style="@style/et_input_value"
             android:layout_height="@dimen/dd_dimen_96px"
             android:hint="@string/hint_re_input_new_psw"
             android:background="@color/font_color_four"
-            android:textSize="@dimen/dd_dimen_24px"
-            android:textColor="@color/font_color_one"
-            android:singleLine="true"
-            android:gravity="center_vertical"
             android:layout_below="@id/v_line2"
             android:paddingLeft="@dimen/dd_dimen_30px"
             android:paddingRight="@dimen/dd_dimen_30px"
@@ -135,15 +102,10 @@
 
         <Button
             android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dd_dimen_88px"
+            style="@style/btn_style"
             android:text="@string/save"
             android:layout_marginLeft="@dimen/dd_dimen_60px"
             android:layout_marginRight="@dimen/dd_dimen_60px"
-            android:gravity="center"
-            android:textSize="@dimen/dd_dimen_24px"
-            android:textColor="@color/font_color_four"
-            android:background="@drawable/bg_btn"
             android:layout_below="@id/et_re_new_psw"
             android:layout_marginTop="@dimen/dd_dimen_60px"/>
 

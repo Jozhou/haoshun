@@ -2,9 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:left="-2dp" android:right="-2dp">
         <shape>
-            <stroke android:width="@dimen/dd_dimen_2px"
-                android:color="@color/font_color_five" />
-            <solid android:color="@color/font_color_four"></solid>
+            <stroke android:width="@dimen/dd_dimen_1px"
+                android:color="@color/line_mine_item" />
+            <solid android:color="@color/bg_selector"></solid>
         </shape>
     </item>
 </layer-list>

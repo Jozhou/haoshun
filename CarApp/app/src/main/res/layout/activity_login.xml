@@ -9,8 +9,7 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/login"
-        app:lefticon="@drawable/btn_back"/>
+        app:title="@string/title_login"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -90,7 +89,8 @@
             android:textColor="@color/font_color_one"
             android:layout_below="@id/btn_login"
             android:layout_marginTop="@dimen/dd_dimen_30px"
-            android:layout_marginLeft="@dimen/dd_dimen_60px"/>
+            android:layout_marginLeft="@dimen/dd_dimen_60px"
+            android:paddingBottom="@dimen/dd_dimen_30px"/>
 
         <TextView
             android:id="@+id/tv_forget_psw"
@@ -102,7 +102,8 @@
             android:layout_below="@id/btn_login"
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/dd_dimen_30px"
-            android:layout_marginRight="@dimen/dd_dimen_60px"/>
+            android:layout_marginRight="@dimen/dd_dimen_60px"
+            android:paddingBottom="@dimen/dd_dimen_30px"/>
 
         <LinearLayout
             android:id="@+id/ll_third_login"

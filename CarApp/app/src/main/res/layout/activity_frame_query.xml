@@ -32,15 +32,10 @@
 
         <Button
             android:id="@+id/btn_query"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dd_dimen_88px"
+            style="@style/btn_style"
             android:text="@string/query"
             android:layout_marginLeft="@dimen/dd_dimen_30px"
             android:layout_marginRight="@dimen/dd_dimen_30px"
-            android:gravity="center"
-            android:textSize="@dimen/font_size_three"
-            android:textColor="@color/font_color_four"
-            android:background="@drawable/bg_btn"
             android:layout_below="@id/et_frame_num"
             android:layout_marginTop="@dimen/dd_dimen_120px"/>
 
