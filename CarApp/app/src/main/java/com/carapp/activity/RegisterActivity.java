@@ -190,10 +190,10 @@ public class RegisterActivity extends BaseActivity {
             DialogUtils.showToastMessage(R.string.hint_input_tel);
             return;
         }
-        if (tel.length() != 11) {
-            DialogUtils.showToastMessage(R.string.error_tel_format);
-            return;
-        }
+//        if (tel.length() != 11) {
+//            DialogUtils.showToastMessage(R.string.error_tel_format);
+//            return;
+//        }
 
         if (verifyCode.length() == 0) {
             DialogUtils.showToastMessage(R.string.hint_input_verify_code);
