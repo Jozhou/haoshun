@@ -61,14 +61,8 @@ public class PersonalInfoActivity extends BaseActivity {
     private View vBindTel;
     @ViewInject(value = "ll_modify_psw", setClickListener = true)
     private View vModifyPsw;
-    @ViewInject(value = "ll_brand", setClickListener = true)
-    private View vBrand;
-    @ViewInject(value = "ll_series", setClickListener = true)
-    private View vSeries;
-    @ViewInject(value = "ll_year_style", setClickListener = true)
-    private View vYearStyle;
-    @ViewInject(value = "ll_version", setClickListener = true)
-    private View vVersion;
+    @ViewInject(value = "ll_vehicle", setClickListener = true)
+    private View vVehicle;
 
     @ViewInject("tv_nick")
     private TextView tvNick;
@@ -78,17 +72,11 @@ public class PersonalInfoActivity extends BaseActivity {
     private TextView tvAccount;
     @ViewInject("tv_bind_tel")
     private TextView tvBindTel;
-    @ViewInject("tv_brand")
-    private TextView tvBrand;
-    @ViewInject("tv_series")
-    private TextView tvSeries;
-    @ViewInject("tv_year_style")
-    private TextView tvYearStyle;
-    @ViewInject("tv_version")
-    private TextView tvVersion;
+    @ViewInject("tv_vehicle")
+    private TextView tvVehicle;
 
-    private static final int REQUEST_MODIFY_NICK = 1;
-    private static final int REQUEST_HEAD_ICON = 2;
+    private static final int REQUEST_MODIFY_NICK = 1001;
+    private static final int REQUEST_HEAD_ICON = 1002;
 
     private VehicleItemEntry brand;
     private VehicleItemEntry series;
@@ -134,15 +122,16 @@ public class PersonalInfoActivity extends BaseActivity {
         } else if (id == R.id.ll_modify_psw) {
             Intent intent = new Intent(this, ModifyPswActivity.class);
             startActivity(intent);
-        } else if (id == R.id.ll_brand) {
-            onSelBrand();
-        } else if (id == R.id.ll_series) {
-            onSelSeries();
-        } else if (id == R.id.ll_year_style) {
-            onSelYearStyle();
-        } else if (id == R.id.ll_version) {
-            onSelVersion();
+        } else if (id == R.id.ll_vehicle) {
+            onSelVehicle();
         }
+    }
+
+    private void onSelVehicle() {
+        Intent intent = new Intent(this, SelVehicleActivity.class);
+        intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, SelVehicleActivity.FROM_PERSONAL);
+        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_BRAND);
+        startActivityForResult(intent, SelVehicleActivity.SEL_BRAND);
     }
 
     @Override
@@ -156,50 +145,11 @@ public class PersonalInfoActivity extends BaseActivity {
         tvSex.setText(Account.get().getSexStr());
         tvAccount.setText(Account.get().tel);
         tvBindTel.setText(Account.get().tel);
-        tvBrand.setText(Account.get().brand_name);
-        tvSeries.setText(Account.get().series_name);
-        tvYearStyle.setText(Account.get().year_style);
-        tvVersion.setText(Account.get().version);
-    }
-
-    private void onSelBrand() {
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_BRAND);
-        startActivityForResult(intent, SelVehicleActivity.SEL_BRAND);
-    }
-
-    private void onSelSeries() {
-//        if (brand == null) {
-//            DialogUtils.showToastMessage(R.string.sel_brand_id);
-//            return;
-//        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_SERIES);
-        intent.putExtra(IntentCode.INTENT_BRAND_ID, "137");
-        startActivityForResult(intent, SelVehicleActivity.SEL_SERIES);
-    }
-
-    private void onSelYearStyle() {
-//        if (series == null) {
-//            DialogUtils.showToastMessage(R.string.sel_series_id);
-//            return;
-//        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_YEAR_STYLE);
-//        intent.putExtra(IntentCode.INTENT_SERIES_ID, series.id);
-        startActivityForResult(intent, SelVehicleActivity.SEL_YEAR_STYLE);
-    }
-
-    private void onSelVersion() {
-//        if (yearStyle == null) {
-//            DialogUtils.showToastMessage(R.string.sel_year_style);
-//            return;
-//        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_VERSION);
-//        intent.putExtra(IntentCode.INTENT_SERIES_ID, series.id);
-//        intent.putExtra(IntentCode.INTENT_YEAR_STYLE, yearStyle.name);
-        startActivityForResult(intent, SelVehicleActivity.SEL_VERSION);
+        tvVehicle.setText(getResources().getString(R.string.show_vehicle,
+                Account.get().brand_name,
+                Account.get().series_name,
+                Account.get().year_style,
+                Account.get().version));
     }
 
     private void selPic() {
@@ -286,6 +236,15 @@ public class PersonalInfoActivity extends BaseActivity {
         } else if (requestCode == REQUEST_MODIFY_NICK) {
             if (resultCode == RESULT_OK) {
                 tvNick.setText(Account.get().nickname);
+            }
+        } else if (requestCode == SelVehicleActivity.SEL_BRAND) {
+            if (resultCode == RESULT_OK) {
+                brand = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_BRAND);
+                series = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_SERIES);
+                yearStyle = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_YEAR_STYLE);
+                version = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VERSION);
+                tvVehicle.setText(getResources().getString(R.string.show_vehicle, brand.name, series.name, yearStyle.name, version.name));
+                Account.get().setVehicle(brand, series, yearStyle, version);
             }
         }
     }

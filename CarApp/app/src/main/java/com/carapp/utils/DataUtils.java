@@ -118,5 +118,17 @@ public class DataUtils {
 	public static void setPwd(String pwd) {
 		PreferenceUtils.putString(KEY_ACCOUNT_PWD, pwd);
 	}
+
+	public static void setVehicle(String brand_id, String brand_name,
+							  String series_id, String series_name, String year_style,
+							  String version, String carcode) {
+		PreferenceUtils.putString(KEY_ACCOUNT_BRAND_ID, brand_id);
+		PreferenceUtils.putString(KEY_ACCOUNT_BRAND_NAME, brand_name);
+		PreferenceUtils.putString(KEY_ACCOUNT_SERIES_ID, series_id);
+		PreferenceUtils.putString(KEY_ACCOUNT_SERIES_NAME, series_name);
+		PreferenceUtils.putString(KEY_ACCOUNT_YEAR_STYLE, year_style);
+		PreferenceUtils.putString(KEY_ACCOUNT_VERSION, version);
+		PreferenceUtils.putString(KEY_ACCOUNT_CARCODE, carcode);
+	}
 	
 }

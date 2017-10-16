@@ -21,7 +21,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/font_color_two"
             android:orientation="vertical">
 
             <LinearLayout
@@ -157,27 +156,7 @@
                     style="@style/tv_personal_info_name"
                     android:text="@string/modify_psw"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_arror_right"/>
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                 />
-
-            <LinearLayout
-                android:id="@+id/ll_brand"
-                style="@style/ll_personal_info">
-
                 <TextView
-                    style="@style/tv_personal_info_name"
-                    android:text="@string/brand_id"/>
-
-                <TextView
-                    android:id="@+id/tv_brand"
                     style="@style/tv_personal_info_value"/>
 
                 <ImageView
@@ -192,62 +171,23 @@
                  />
 
             <LinearLayout
-                android:id="@+id/ll_series"
-                style="@style/ll_personal_info">
+                android:id="@+id/ll_vehicle"
+                style="@style/ll_personal_info"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dd_dimen_96px">
 
                 <TextView
                     style="@style/tv_personal_info_name"
-                    android:text="@string/series_id"/>
+                    android:text="@string/vehicle_info"/>
 
                 <TextView
-                    android:id="@+id/tv_series"
-                    style="@style/tv_personal_info_value"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_vehicle"
+                    style="@style/tv_personal_info_value"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_arror_right"/>
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                 />
-
-            <LinearLayout
-                android:id="@+id/ll_year_style"
-                style="@style/ll_personal_info">
-
-                <TextView
-                    style="@style/tv_personal_info_name"
-                    android:text="@string/year_style"/>
-
-                <TextView
-                    android:id="@+id/tv_year_style"
-                    style="@style/tv_personal_info_value"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_arror_right"/>
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                 />
-
-            <LinearLayout
-                android:id="@+id/ll_version"
-                style="@style/ll_personal_info">
-
-                <TextView
-                    style="@style/tv_personal_info_name"
-                    android:text="@string/version"/>
-
-                <TextView
-                    android:id="@+id/tv_version"
-                    style="@style/tv_personal_info_value"/>
+                    android:minHeight="@dimen/dd_dimen_96px"
+                    android:paddingTop="@dimen/dd_dimen_20px"
+                    android:paddingBottom="@dimen/dd_dimen_20px"
+                    android:singleLine="false"/>
 
                 <ImageView
                     android:layout_width="wrap_content"

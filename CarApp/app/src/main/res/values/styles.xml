@@ -112,9 +112,8 @@
     </style>
 
     <style name="tv_personal_info_name">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/font_color_one</item>
         <item name="android:textSize">@dimen/font_size_three</item>
         <item name="android:gravity">center_vertical</item>
@@ -122,13 +121,15 @@
     </style>
 
     <style name="tv_personal_info_value">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/font_color_one</item>
         <item name="android:textSize">@dimen/font_size_four</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical|right</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginRight">@dimen/dd_dimen_30px</item>
+        <item name="android:layout_marginLeft">@dimen/dd_dimen_60px</item>
     </style>
 
     <style name="tv_input_name">

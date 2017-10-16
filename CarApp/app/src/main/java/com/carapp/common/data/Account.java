@@ -8,6 +8,7 @@ import android.text.TextUtils;
 
 import com.carapp.R;
 import com.carapp.application.CarApplication;
+import com.carapp.models.entry.VehicleItemEntry;
 import com.carapp.utils.DataUtils;
 import com.corelibrary.activity.base.BaseActivity;
 import com.corelibrary.cache.data.CacheManager;
@@ -131,6 +132,17 @@ public class Account extends BaseEntry {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 		DataUtils.setPwd(pwd);
+	}
+
+	public void setVehicle(VehicleItemEntry brand, VehicleItemEntry series, VehicleItemEntry yearStyle, VehicleItemEntry version) {
+		this.brand_id = brand.id;
+		this.brand_name = brand.name;
+		this.series_id = series.id;
+		this.series_name = series.name;
+		this.year_style = yearStyle.name;
+		this.version = version.name;
+		this.carcode = version.carcode;
+		DataUtils.setVehicle(brand_id, brand_name, series_id, series_name, year_style, this.version, carcode);
 	}
 
 	public void logout(final Context context) {

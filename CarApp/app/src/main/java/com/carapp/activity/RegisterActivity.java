@@ -21,6 +21,9 @@ import com.corelibrary.utils.LogcatUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -44,14 +47,8 @@ public class RegisterActivity extends BaseActivity {
     private TextView tvGetCode;
     @ViewInject("et_confirm_psw")
     private EditText etConfirmPsw;
-    @ViewInject(value = "tv_brand", setClickListener = true)
-    private TextView tvBrand;
-    @ViewInject(value = "tv_series", setClickListener = true)
-    private TextView tvSeries;
-    @ViewInject(value = "tv_year_style", setClickListener = true)
-    private TextView tvYearStyle;
-    @ViewInject(value = "tv_version", setClickListener = true)
-    private TextView tvVersion;
+    @ViewInject(value = "tv_vehicle", setClickListener = true)
+    private TextView tvVehicle;
 
     @ViewInject(value = "tv_agreement", setClickListener = true)
     private TextView tvAgreement;
@@ -91,7 +88,14 @@ public class RegisterActivity extends BaseActivity {
                         if (data instanceof Throwable) {
                             Throwable throwable = (Throwable)data;
                             String msg = throwable.getMessage();
-                            DialogUtils.showToastMessage(msg);
+                            try {
+                                JSONObject object = new JSONObject(msg);
+                                String detail = object.getString("detail");
+                                DialogUtils.showToastMessage(detail);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                DialogUtils.showToastMessage(msg);
+                            }
                             if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                                 // 处理你自己的逻辑
                                 onSendMessageFail();
@@ -129,55 +133,16 @@ public class RegisterActivity extends BaseActivity {
 
         } else if (id == R.id.btn_confirm) {
             doRegister();
-        } else if (id == R.id.tv_brand) {
-            onSelBrand();
-        } else if (id == R.id.tv_series) {
-            onSelSeries();
-        } else if (id == R.id.tv_year_style) {
-            onSelYearStyle();
-        } else if (id == R.id.tv_version) {
-            onSelVersion();
+        } else if (id == R.id.tv_vehicle) {
+            onSelVehicle();
         }
     }
 
-    private void onSelBrand() {
+    private void onSelVehicle() {
         Intent intent = new Intent(this, SelVehicleActivity.class);
+        intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, SelVehicleActivity.FROM_REIGSTER);
         intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_BRAND);
         startActivityForResult(intent, SelVehicleActivity.SEL_BRAND);
-    }
-
-    private void onSelSeries() {
-        if (brand == null) {
-            DialogUtils.showToastMessage(R.string.sel_brand_id);
-            return;
-        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_SERIES);
-        intent.putExtra(IntentCode.INTENT_BRAND_ID, brand.id);
-        startActivityForResult(intent, SelVehicleActivity.SEL_SERIES);
-    }
-
-    private void onSelYearStyle() {
-        if (series == null) {
-            DialogUtils.showToastMessage(R.string.sel_series_id);
-            return;
-        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_YEAR_STYLE);
-        intent.putExtra(IntentCode.INTENT_SERIES_ID, series.id);
-        startActivityForResult(intent, SelVehicleActivity.SEL_YEAR_STYLE);
-    }
-
-    private void onSelVersion() {
-        if (yearStyle == null) {
-            DialogUtils.showToastMessage(R.string.sel_year_style);
-            return;
-        }
-        Intent intent = new Intent(this, SelVehicleActivity.class);
-        intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_VERSION);
-        intent.putExtra(IntentCode.INTENT_SERIES_ID, series.id);
-        intent.putExtra(IntentCode.INTENT_YEAR_STYLE, yearStyle.name);
-        startActivityForResult(intent, SelVehicleActivity.SEL_VERSION);
     }
 
     private void doRegister() {
@@ -212,20 +177,8 @@ public class RegisterActivity extends BaseActivity {
             DialogUtils.showToastMessage(R.string.error_psw_not_equal);
             return;
         }
-        if (brand.name.length() == 0) {
-            DialogUtils.showToastMessage(R.string.sel_brand_id);
-            return;
-        }
-        if (series.name.length() == 0) {
-            DialogUtils.showToastMessage(R.string.sel_series_id);
-            return;
-        }
-        if (yearStyle.name.length() == 0) {
-            DialogUtils.showToastMessage(R.string.sel_year_style);
-            return;
-        }
         if (version.name.length() == 0) {
-            DialogUtils.showToastMessage(R.string.sel_version);
+            DialogUtils.showToastMessage(R.string.sel_vehicle);
             return;
         }
 
@@ -256,23 +209,11 @@ public class RegisterActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SelVehicleActivity.SEL_BRAND) {
             if (resultCode == RESULT_OK) {
-                brand = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VEHICLE_ITEM);
-                tvBrand.setText(brand.name);
-            }
-        } else if (requestCode == SelVehicleActivity.SEL_SERIES) {
-            if (resultCode == RESULT_OK) {
-                series = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VEHICLE_ITEM);
-                tvSeries.setText(series.name);
-            }
-        } else if (requestCode == SelVehicleActivity.SEL_YEAR_STYLE) {
-            if (resultCode == RESULT_OK) {
-                yearStyle = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VEHICLE_ITEM);
-                tvYearStyle.setText(yearStyle.name);
-            }
-        } else if (requestCode == SelVehicleActivity.SEL_VERSION) {
-            if (resultCode == RESULT_OK) {
-                version = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VEHICLE_ITEM);
-                tvVersion.setText(version.name);
+                brand = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_BRAND);
+                series = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_SERIES);
+                yearStyle = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_YEAR_STYLE);
+                version = (VehicleItemEntry) data.getSerializableExtra(IntentCode.INTENT_VERSION);
+                tvVehicle.setText(getResources().getString(R.string.show_vehicle, brand.name, series.name, yearStyle.name, version.name));
             }
         }
     }

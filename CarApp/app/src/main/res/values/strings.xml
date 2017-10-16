@@ -22,8 +22,9 @@
     <string name="agreement_register">注册即表示同意《好顺自动变速箱油注册协议》</string>
     <string name="confirm">确&#160;&#160;认</string>
     <string name="confirm_pwd">确认密码</string>
-    <string name="hint_input_confirm_pwd">请再次输入密码</string>
-    <string name="vehicle_info">车辆信息</string>
+    <string name="hint_input_confirm_pwd">请再次输入密码</string>%1$s
+    <string name="show_vehicle">%1$s,%2$s,%3$s,%4$s</string>
+    <string name="vehicle_info">车辆</string>
     <string name="sel_vehicle">请选择车辆</string>
     <string name="brand_id">车牌</string>
     <string name="sel_brand_id">请选择车牌</string>

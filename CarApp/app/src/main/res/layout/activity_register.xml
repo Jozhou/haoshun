@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/font_color_two">
 
     <com.corelibrary.view.TitleBar
         android:id="@+id/titlebar"
@@ -19,7 +20,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/font_color_two"
             android:orientation="vertical">
 
             <ImageView
@@ -127,70 +127,23 @@
                 android:layout_below="@id/ll_tel" />
 
             <LinearLayout
-                style="@style/layout_input">
+                style="@style/layout_input"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dd_dimen_96px">
 
                 <TextView
                     style="@style/tv_input_name"
-                    android:text="@string/brand_id" />
+                    android:text="@string/vehicle_info" />
 
                 <TextView
-                    android:id="@+id/tv_brand"
+                    android:id="@+id/tv_vehicle"
                     style="@style/tv_sel_vehicle"
-                    android:hint="@string/sel_brand_id" />
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                android:layout_below="@id/ll_tel" />
-
-            <LinearLayout
-                style="@style/layout_input">
-
-                <TextView
-                    style="@style/tv_input_name"
-                    android:text="@string/series_id" />
-
-                <TextView
-                    android:id="@+id/tv_series"
-                    style="@style/tv_sel_vehicle"
-                    android:hint="@string/sel_series_id" />
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                android:layout_below="@id/ll_tel" />
-
-            <LinearLayout
-                style="@style/layout_input">
-
-                <TextView
-                    style="@style/tv_input_name"
-                    android:text="@string/year_style" />
-
-                <TextView
-                    android:id="@+id/tv_year_style"
-                    style="@style/tv_sel_vehicle"
-                    android:hint="@string/sel_year_style" />
-            </LinearLayout>
-
-            <View
-                style="@style/line_hor1"
-                android:layout_width="match_parent"
-                android:layout_below="@id/ll_tel" />
-
-            <LinearLayout
-                style="@style/layout_input">
-
-                <TextView
-                    style="@style/tv_input_name"
-                    android:text="@string/version" />
-
-                <TextView
-                    android:id="@+id/tv_version"
-                    style="@style/tv_sel_vehicle"
-                    android:hint="@string/sel_version" />
+                    android:hint="@string/sel_vehicle"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dd_dimen_96px"
+                    android:paddingTop="@dimen/dd_dimen_20px"
+                    android:paddingBottom="@dimen/dd_dimen_20px"
+                    android:singleLine="false"/>
             </LinearLayout>
 
             <LinearLayout
