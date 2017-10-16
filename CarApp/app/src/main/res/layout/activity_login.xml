@@ -30,7 +30,9 @@
             android:layout_below="@id/iv_icon">
             <TextView
                 style="@style/tv_input_name"
-                android:text="@string/account"/>
+                android:text="@string/account"
+                android:drawableLeft="@drawable/login_user"
+                android:drawablePadding="@dimen/dd_dimen_6px"/>
 
             <EditText
                 android:id="@+id/et_account"
@@ -50,7 +52,9 @@
             android:layout_below="@id/v_line1">
             <TextView
                 style="@style/tv_input_name"
-                android:text="@string/password"/>
+                android:text="@string/password"
+                android:drawableLeft="@drawable/login_pwd"
+                android:drawablePadding="@dimen/dd_dimen_6px"/>
 
             <EditText
                 android:id="@+id/et_psw"

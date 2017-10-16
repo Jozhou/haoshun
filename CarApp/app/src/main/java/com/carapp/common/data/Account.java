@@ -1,6 +1,9 @@
 package com.carapp.common.data;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.carapp.R;
@@ -131,7 +134,7 @@ public class Account extends BaseEntry {
 	}
 
 	public void logout(final Context context) {
-		logout(context, true);
+		logout(context, false);
 	}
 
 	/**
@@ -157,7 +160,14 @@ public class Account extends BaseEntry {
 	private void _logout() {
 		clear();
 		// 跳转至登录页
-//		PackageUtils.restartApplication();
+//		Intent intent = new Intent(DriverApp.getContext(), ReLoginActivity.class);
+//		PendingIntent restartIntent = PendingIntent.getActivity(
+//				DriverApp.getContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+//		AlarmManager manager = (AlarmManager) DriverApp.getContext().getSystemService(Context.ALARM_SERVICE);
+//		manager.set(AlarmManager.RTC, System.currentTimeMillis() + 200, restartIntent);
+//		com.szzc.ucar.manager.ActivityManager.get().popupAllActivity();
+//		System.exit(0);
+
 	}
 
 	/**

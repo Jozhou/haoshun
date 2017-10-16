@@ -67,7 +67,8 @@
         android:layout_marginTop="@dimen/dd_dimen_60px">
         <TextView
             style="@style/mine_ll_item_txt"
-            android:text="@string/conversation_record_query"/>
+            android:text="@string/conversation_record_query"
+            android:drawableLeft="@drawable/me_shangchengdingdan"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -81,7 +82,8 @@
         android:layout_marginTop="@dimen/dd_dimen_30px">
         <TextView
             style="@style/mine_ll_item_txt"
-            android:text="@string/my_collect"/>
+            android:text="@string/my_collect"
+            android:drawableLeft="@drawable/me_wodeshoucang"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -95,7 +97,8 @@
         android:layout_marginTop="@dimen/dd_dimen_30px">
         <TextView
             style="@style/mine_ll_item_txt"
-            android:text="@string/settings"/>
+            android:text="@string/settings"
+            android:drawableLeft="@drawable/me_shezhi"/>
 
         <ImageView
             android:layout_width="wrap_content"

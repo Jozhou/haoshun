@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.carapp.R;
 import com.carapp.models.operater.LoginOperater;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.manager.ActivityManager;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
@@ -47,6 +48,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onApplyData() {
         super.onApplyData();
+        ActivityManager.get().popupAllActivityExclusiveCurrent();
     }
 
     @Override

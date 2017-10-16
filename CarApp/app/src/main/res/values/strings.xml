@@ -23,6 +23,8 @@
     <string name="confirm">确&#160;&#160;认</string>
     <string name="confirm_pwd">确认密码</string>
     <string name="hint_input_confirm_pwd">请再次输入密码</string>
+    <string name="vehicle_info">车辆信息</string>
+    <string name="sel_vehicle">请选择车辆</string>
     <string name="brand_id">车牌</string>
     <string name="sel_brand_id">请选择车牌</string>
     <string name="series_id">车系</string>
@@ -108,5 +110,13 @@
     <string name="title_sel_version">版本选择</string>
 
     <!-- 个人车辆 end-->
+
+    <!-- 设置 start-->
+    <string name="logout">退出登录</string>
+    <string name="feedback">意见反馈</string>
+    <string name="service_term">服务条款</string>
+    <string name="about_us">关于我们</string>
+
+    <!-- 设置 end-->
 
 </resources>

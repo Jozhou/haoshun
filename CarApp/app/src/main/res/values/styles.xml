@@ -87,6 +87,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/font_color_one</item>
         <item name="android:textSize">@dimen/font_size_three</item>
+        <item name="android:drawablePadding">@dimen/dd_dimen_10px</item>
     </style>
 
     <style name="tv_sel_vehicle">
@@ -131,7 +132,7 @@
     </style>
 
     <style name="tv_input_name">
-        <item name="android:layout_width">@dimen/dd_dimen_100px</item>
+        <item name="android:layout_width">@dimen/dd_dimen_120px</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/font_color_one</item>
         <item name="android:textSize">@dimen/font_size_three</item>
@@ -177,6 +178,16 @@
         <item name="android:textSize">@dimen/font_size_two</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="setting_ll_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dd_dimen_96px</item>
+        <item name="android:background">@drawable/bg_selector</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/dd_dimen_30px</item>
+        <item name="android:paddingRight">@dimen/dd_dimen_30px</item>
     </style>
 
 </resources>
