@@ -83,7 +83,7 @@ public class SimpleListItemDecoration extends RecyclerView.ItemDecoration {
         } else if (isFirstRow(actualPos)) {
             outRect.set(0,0,0,0);
         } else {
-            outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
+            outRect.set(0, mDivider.getIntrinsicHeight(), 0, 0);
         }
     }
 

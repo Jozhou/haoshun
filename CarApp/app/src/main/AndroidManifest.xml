@@ -101,6 +101,13 @@
             android:name=".activity.SettingsActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity
+            android:name=".activity.ActivityWeb"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:process=":webview"></activity>
+
     </application>
 
 </manifest>

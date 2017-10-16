@@ -15,4 +15,7 @@ public class IntentCode {
     public static final String INTENT_VERSION = "version";
 
     public static final String INTENT_FRAME_NUM_LIST = "frame_num_list";
+    public static final String INTENT_WEB_URL = "web_url";
+    public static final String INTENT_WEB_TITLE = "web_title";
+    public static final String INTENT_WEB_AUTOTITLE = "web_autotitle";
 }

@@ -1,10 +1,17 @@
 package com.carapp.fragment;
 
+import android.content.Intent;
+import android.view.View;
+
 import com.carapp.R;
+import com.carapp.activity.ActivityWeb;
+import com.carapp.context.IntentCode;
 import com.carapp.models.adapter.AdAdapter;
+import com.carapp.models.entry.NewsEntry;
 import com.carapp.models.operater.GetNewsOperater;
 import com.carapp.view.MainHeaderView;
 import com.carapp.view.NewsListView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.corelibrary.fragment.base.BaseFragment;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ViewInject.ViewInject;
@@ -26,6 +33,20 @@ public class MainFragment extends BaseFragment {
     @Override
     protected int getContentResId() {
         return R.layout.fragment_main;
+    }
+
+    @Override
+    protected void onBindListener() {
+        super.onBindListener();
+        lvNews.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                NewsEntry entry = (NewsEntry) adapter.getData().get(position);
+                Intent intent = new Intent(mContext, ActivityWeb.class);
+                intent.putExtra(IntentCode.INTENT_WEB_URL, "http://" + entry.url);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
