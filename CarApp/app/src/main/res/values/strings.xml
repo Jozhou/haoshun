@@ -120,4 +120,13 @@
 
     <!-- 设置 end-->
 
+
+    <!-- 门店 start-->
+    <string name="all">全部</string>
+    <string name="conversation_center">养护中心</string>
+    <string name="repair_center">维修中心</string>
+    <string name="address">地址：$s</string>
+
+    <!-- 门店 end-->
+
 </resources>
