@@ -108,6 +108,10 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
             android:process=":webview"></activity>
 
+        <activity
+            android:name=".activity.ModifyTelActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

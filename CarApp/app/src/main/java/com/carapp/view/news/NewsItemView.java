@@ -1,4 +1,4 @@
-package com.carapp.view;
+package com.carapp.view.news;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -39,7 +39,7 @@ public class NewsItemView extends MRelativeLayout<NewsEntry> {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.item_latest_news;
+        return R.layout.item_news;
     }
 
     @Override

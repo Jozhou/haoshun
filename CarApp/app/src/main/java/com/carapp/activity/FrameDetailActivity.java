@@ -94,7 +94,7 @@ public class FrameDetailActivity extends BaseActivity {
         mAdater = new FrameNumAdapter(this, mData);
         lvConfig.setAdapter(mAdater);
 
-        rgTabs.check(R.id.rb_config);
+        rgTabs.check(R.id.rb_all);
         scrollView.smoothScrollTo(0, 0);
     }
 }

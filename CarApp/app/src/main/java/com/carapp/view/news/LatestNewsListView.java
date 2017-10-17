@@ -1,4 +1,4 @@
-package com.carapp.view;
+package com.carapp.view.news;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,10 +7,7 @@ import android.view.View;
 
 import com.carapp.R;
 import com.carapp.models.entry.NewsEntry;
-import com.carapp.models.entry.VehicleItemEntry;
 import com.carapp.models.operater.GetNewsOperater;
-import com.carapp.models.operater.GetYearStyleOperater;
-import com.carapp.view.vehicle.VehicleItemView;
 import com.corelibrary.models.http.IArrayOperater;
 import com.corelibrary.view.adapterview.PullToRefreshMoreView;
 
@@ -18,19 +15,19 @@ import com.corelibrary.view.adapterview.PullToRefreshMoreView;
  * Created by Administrator on 2017/10/9.
  */
 
-public class NewsListView extends PullToRefreshMoreView<NewsEntry> {
+public class LatestNewsListView extends PullToRefreshMoreView<NewsEntry> {
 
     private GetNewsOperater operater;
 
-    public NewsListView(Context context) {
+    public LatestNewsListView(Context context) {
         super(context);
     }
 
-    public NewsListView(Context context, AttributeSet attrs) {
+    public LatestNewsListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public NewsListView(Context context, AttributeSet attrs, int defStyle) {
+    public LatestNewsListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -52,7 +49,7 @@ public class NewsListView extends PullToRefreshMoreView<NewsEntry> {
 
     @Override
     protected View getLayoutItemView(int resId) {
-        return new NewsItemView(mContext);
+        return new LatestNewsItemView(mContext);
     }
 
     @Override

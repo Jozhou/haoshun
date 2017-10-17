@@ -53,5 +53,8 @@
         android:ellipsize="end"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="8"/>
+        android:gravity="center_vertical"
+        android:text="8"
+        android:drawableLeft="@drawable/shop_weishoucang"
+        android:drawablePadding="@dimen/dd_dimen_4px"/>
 </RelativeLayout>

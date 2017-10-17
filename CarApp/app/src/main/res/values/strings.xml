@@ -93,6 +93,7 @@
     <string name="settings">设置</string>
     <string name="modify_nick">修改昵称</string>
     <string name="hint_input_nickname">请输入昵称</string>
+    <string name="modify_tel">修改手机</string>
 
     <string name="take_photo">拍照</string>
     <string name="local_pic">本地图片</string>

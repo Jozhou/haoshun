@@ -9,7 +9,6 @@ import com.carapp.R;
 import com.carapp.activity.PersonalInfoActivity;
 import com.carapp.activity.SettingsActivity;
 import com.carapp.common.data.Account;
-import com.carapp.view.NewsListView;
 import com.corelibrary.fragment.base.BaseFragment;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.CircleImageView;

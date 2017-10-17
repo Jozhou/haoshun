@@ -6,18 +6,13 @@ import android.view.View;
 import com.carapp.R;
 import com.carapp.activity.ActivityWeb;
 import com.carapp.context.IntentCode;
-import com.carapp.models.adapter.AdAdapter;
 import com.carapp.models.entry.NewsEntry;
-import com.carapp.models.operater.GetNewsOperater;
 import com.carapp.view.MainHeaderView;
-import com.carapp.view.NewsListView;
+import com.carapp.view.news.LatestNewsListView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.corelibrary.fragment.base.BaseFragment;
-import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.decoration.SimpleListItemDecoration;
-import com.corelibrary.view.viewflow.CircleFlowIndicator;
-import com.corelibrary.view.viewflow.ViewFlow;
 
 /**
  * Created by Administrator on 2017/9/28.
@@ -26,7 +21,7 @@ import com.corelibrary.view.viewflow.ViewFlow;
 public class MainFragment extends BaseFragment {
 
     @ViewInject("lv_news")
-    private NewsListView lvNews;
+    private LatestNewsListView lvNews;
 
     private MainHeaderView mainHeaderView;
 

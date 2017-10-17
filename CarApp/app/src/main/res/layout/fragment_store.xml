@@ -51,23 +51,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dd_dimen_10px">
-            <com.corelibrary.view.MeasureListView
-                android:id="@+id/lv_config"
+            <com.carapp.view.store.StoreListView
+                android:id="@+id/rv_all"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"/>
+                android:layout_height="wrap_content"/>
 
-            <com.corelibrary.view.MeasureListView
-                android:id="@+id/lv_oem"
+            <com.carapp.view.store.StoreListView
+                android:id="@+id/rv_conversation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"/>
+                android:layout_height="wrap_content"/>
 
-            <com.corelibrary.view.MeasureListView
-                android:id="@+id/lv_parts"
+            <com.carapp.view.store.StoreListView
+                android:id="@+id/rv_repair"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"/>
+                android:layout_height="wrap_content"/>
         </FrameLayout>
 
     </LinearLayout>

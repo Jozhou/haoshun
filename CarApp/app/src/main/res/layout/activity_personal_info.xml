@@ -123,11 +123,12 @@
             <View
                 style="@style/line_hor1"
                 android:layout_width="match_parent"
-                 />
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/ll_bind_tel"
-                style="@style/ll_personal_info">
+                style="@style/ll_personal_info"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/tv_personal_info_name"

@@ -9,12 +9,14 @@ import android.widget.RelativeLayout;
 import com.carapp.R;
 import com.carapp.context.IntentCode;
 import com.carapp.models.entry.VehicleItemEntry;
+import com.carapp.models.operater.UpdateCarcodeOperater;
 import com.carapp.view.vehicle.BrandListView;
 import com.carapp.view.vehicle.SeriesListView;
 import com.carapp.view.vehicle.VersionListView;
 import com.carapp.view.vehicle.YearStyleListView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
@@ -132,13 +134,7 @@ public class SelVehicleActivity extends BaseActivity {
                         finish();
                     } else if (from == FROM_PERSONAL) {
                         version = entry;
-                        Intent intent = new Intent();
-                        intent.putExtra(IntentCode.INTENT_BRAND, brand);
-                        intent.putExtra(IntentCode.INTENT_SERIES, series);
-                        intent.putExtra(IntentCode.INTENT_YEAR_STYLE, yearStyle);
-                        intent.putExtra(IntentCode.INTENT_VERSION, version);
-                        setResult(RESULT_OK, intent);
-                        finish();
+                        updateCarcode();
                     }
                 }
             }
@@ -157,6 +153,26 @@ public class SelVehicleActivity extends BaseActivity {
             resId = R.string.title_sel_version;
         }
         return resId;
+    }
+
+    private void updateCarcode() {
+        final UpdateCarcodeOperater operater = new UpdateCarcodeOperater(this);
+        operater.setParams(version.carcode);
+        operater.onReq(new BaseOperater.RspListener() {
+            @Override
+            public void onRsp(boolean success, Object obj) {
+                if (success) {
+                    DialogUtils.showToastMessage(operater.getMsg());
+                    Intent intent = new Intent();
+                    intent.putExtra(IntentCode.INTENT_BRAND, brand);
+                    intent.putExtra(IntentCode.INTENT_SERIES, series);
+                    intent.putExtra(IntentCode.INTENT_YEAR_STYLE, yearStyle);
+                    intent.putExtra(IntentCode.INTENT_VERSION, version);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
