@@ -1,10 +1,14 @@
 package com.carapp.view.popup;
 
 import android.content.Context;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -46,6 +50,7 @@ public class PopConfirm extends PopupWindow implements OnClickListener {
 		setWindowLayoutMode(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT);
 		setOutsideTouchable(true);
+		setAnimationStyle(R.style.pop_confirm);
 		setContentView(mContentView);
 	}
 
@@ -90,4 +95,25 @@ public class PopConfirm extends PopupWindow implements OnClickListener {
 		this.mCancelClickListener = listener;
 	}
 
+	@Override
+	public void showAtLocation(View parent, int gravity, int x, int y) {
+		super.showAtLocation(parent, gravity, x, y);
+		Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.bottom_in);
+		animation.setFillAfter(true);
+		vContent.setAnimation(animation);
+
+		Animation fadeAnimation = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
+		mContentView.setAnimation(fadeAnimation);
+
+		animation.start();
+		fadeAnimation.start();
+	}
+
+	@Override
+	public void dismiss() {
+		Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.bottom_out);
+		animation.setFillAfter(false);
+		tvOne.startAnimation(animation);
+		super.dismiss();
+	}
 }
