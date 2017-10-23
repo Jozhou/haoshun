@@ -112,6 +112,14 @@
             android:name=".activity.ModifyTelActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity
+            android:name=".activity.ConversationQuerylActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.ConversationQueryDetaillActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

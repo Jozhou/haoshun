@@ -43,6 +43,7 @@ public class SelVehicleActivity extends BaseActivity {
 
     public static final int FROM_REIGSTER = 1;
     public static final int FROM_PERSONAL = 2;
+    public static final int FROM_Conversation = 3;
 
     private int from;
     private int type;
@@ -124,7 +125,7 @@ public class SelVehicleActivity extends BaseActivity {
                     intent.putExtra(IntentCode.INTENT_YEAR_STYLE, entry);
                     startActivityForResult(intent, SelVehicleActivity.SEL_VERSION);
                 } else if (type == SEL_VERSION) {
-                    if (from == FROM_REIGSTER) {
+                    if (from == FROM_REIGSTER || from == FROM_Conversation) {
                         Intent intent = new Intent();
                         intent.putExtra(IntentCode.INTENT_BRAND, brand);
                         intent.putExtra(IntentCode.INTENT_SERIES, series);

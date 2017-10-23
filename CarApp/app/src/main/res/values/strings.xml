@@ -24,6 +24,7 @@
     <string name="confirm_pwd">确认密码</string>
     <string name="hint_input_confirm_pwd">请再次输入密码</string>%1$s
     <string name="show_vehicle">%1$s,%2$s,%3$s,%4$s</string>
+    <string name="show_vehicle2">%1$s/%2$s/%3$s/%4$s</string>
     <string name="vehicle_info">车辆</string>
     <string name="sel_vehicle">请选择车辆</string>
     <string name="brand_id">车牌</string>
@@ -127,7 +128,14 @@
     <string name="conversation_center">养护中心</string>
     <string name="repair_center">维修中心</string>
     <string name="address">地址：$s</string>
-
     <!-- 门店 end-->
+
+
+    <!-- 养护查询 start-->
+    <string name="conversation_query">养护查询</string>
+    <string name="click_clear">一键清空</string>
+    <string name="add">添加</string>
+    <string name="toast_sel_vehicle">请选择车辆</string>
+    <!-- 养护查询 end-->
 
 </resources>

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.carapp.R;
+import com.carapp.activity.ConversationQuerylActivity;
 import com.carapp.activity.FrameNumQueryActivity;
 import com.carapp.models.adapter.AdAdapter;
 import com.carapp.models.operater.GetAdOperater;
@@ -119,7 +120,8 @@ public class MainHeaderView extends MLinearLayout {
         if (id == R.id.ll_conversation_know) {
 
         } else if (id == R.id.ll_conversation_query) {
-
+            Intent intent = new Intent(mContext, ConversationQuerylActivity.class);
+            mContext.startActivity(intent);
         } else if (id == R.id.ll_oil_change) {
 
         } else if (id == R.id.ll_frame_num_query) {

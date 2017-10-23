@@ -6,18 +6,20 @@ import android.util.SparseIntArray;
 import android.view.View;
 
 import com.carapp.R;
-import com.carapp.models.entry.VehicleItemEntry;
-import com.carapp.models.operater.GetBrandOperater;
+import com.carapp.models.entry.StoreEntry;
+import com.carapp.models.operater.GetStoreOperater;
 import com.corelibrary.models.http.IArrayOperater;
 import com.corelibrary.view.adapterview.PullToRefreshMoreView;
+
+import org.json.JSONException;
 
 /**
  * Created by Administrator on 2017/10/9.
  */
 
-public class StoreListView extends PullToRefreshMoreView<VehicleItemEntry> {
+public class StoreListView extends PullToRefreshMoreView<StoreEntry> {
 
-    private GetBrandOperater operater;
+    private GetStoreOperater operater;
 
     public StoreListView(Context context) {
         super(context);
@@ -32,9 +34,10 @@ public class StoreListView extends PullToRefreshMoreView<VehicleItemEntry> {
     }
 
     @Override
-    protected IArrayOperater<VehicleItemEntry> createMode() {
+    protected IArrayOperater<StoreEntry> createMode() {
         if (operater == null) {
-            operater = new GetBrandOperater(mContext);
+            operater = new GetStoreOperater(mContext);
+            operater.setParams(userlon, userlat, shoptype);
             operater.setShowLoading(false);
         }
         return operater;
@@ -55,5 +58,15 @@ public class StoreListView extends PullToRefreshMoreView<VehicleItemEntry> {
     @Override
     public void refresh() {
         getFirstPage(false, true);
+    }
+
+    private String userlon;
+    private String userlat;
+    private int shoptype;
+
+    public void setParams(String userlon, String userlat, int shoptype) {
+        this.userlon = userlon;
+        this.userlat = userlat;
+        this.shoptype = shoptype;
     }
 }

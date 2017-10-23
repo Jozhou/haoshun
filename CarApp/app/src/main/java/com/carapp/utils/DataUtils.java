@@ -27,6 +27,7 @@ public class DataUtils {
 	private static final String KEY_ACCOUNT_PWD = "account_PWD";
 	private static final String KEY_ACCOUNT_TEL = "account_tel";
 	private static final String KEY_ACCOUNT_CARCODE = "account_carcode";
+	private static final String KEY_CONVERSATION_QUERY_ITEM = "conversation_query_item_";
     
     /**
      * 上次发生crash的时间戳
@@ -129,6 +130,18 @@ public class DataUtils {
 		PreferenceUtils.putString(KEY_ACCOUNT_YEAR_STYLE, year_style);
 		PreferenceUtils.putString(KEY_ACCOUNT_VERSION, version);
 		PreferenceUtils.putString(KEY_ACCOUNT_CARCODE, carcode);
+	}
+
+	public static void setConversationQueryItem(int uid, String queryItem) {
+		PreferenceUtils.putString(KEY_CONVERSATION_QUERY_ITEM + uid, queryItem);
+	}
+
+	public static String getConversationQueryItem(int uid) {
+		return PreferenceUtils.getString(KEY_CONVERSATION_QUERY_ITEM + uid);
+	}
+
+	public static void clearConversationQueryItem(int uid) {
+		PreferenceUtils.remove(KEY_CONVERSATION_QUERY_ITEM + uid);
 	}
 	
 }
