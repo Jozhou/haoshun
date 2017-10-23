@@ -114,7 +114,9 @@ public class ConversationQuerylActivity extends BaseActivity {
         int id = v.getId();
         if (id == R.id.tv_clear) {
             ConversationQueryWrapper.get().clear();
+            mAdater.setSelPos(0);
             mAdater.notifyDataSetChanged();
+            tvClear.setVisibility(View.GONE);
         } else if (id == R.id.btn_query) {
             if (mData == null || mData.isEmpty()) {
                 DialogUtils.showToastMessage(R.string.toast_sel_vehicle);

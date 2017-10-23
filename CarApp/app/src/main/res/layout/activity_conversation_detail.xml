@@ -32,7 +32,10 @@
         android:scrollbars="none">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dd_dimen_30px"
+            android:paddingRight="@dimen/dd_dimen_30px"
+            android:paddingBottom="@dimen/dd_dimen_30px">
 
             <TextView
                 android:id="@+id/tv_carcode"

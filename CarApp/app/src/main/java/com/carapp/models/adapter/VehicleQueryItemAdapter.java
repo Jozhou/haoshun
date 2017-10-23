@@ -82,6 +82,10 @@ public class VehicleQueryItemAdapter extends BaseAdapter {
         return this.mData.get(mSelPos);
     }
 
+    public void setSelPos(int pos) {
+        this.mSelPos = 0;
+    }
+
     static class ViewHolder {
         TextView tvDetail;
         ImageView ivCheck;
