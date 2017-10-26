@@ -19,4 +19,6 @@ public class IntentCode {
     public static final String INTENT_WEB_TITLE = "web_title";
     public static final String INTENT_WEB_AUTOTITLE = "web_autotitle";
     public static final String INTENT_VEHICLE_QUERY_ITEM = "vehicle_query_item";
+
+    public static final String INTENT_OIL_MODEL = "oil_model";
 }

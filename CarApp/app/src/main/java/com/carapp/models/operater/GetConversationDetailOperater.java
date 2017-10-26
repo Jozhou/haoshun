@@ -49,6 +49,7 @@ public class GetConversationDetailOperater extends BaseOperater {
                 JSONObject obj = array.getJSONObject(i);
                 entry.name = obj.getString("key");
                 entry.value = obj.getString("value");
+                entry.image = obj.optString("image");
                 mData.add(entry);
             }
         } catch (JSONException e) {

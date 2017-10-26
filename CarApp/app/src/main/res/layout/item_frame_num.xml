@@ -24,4 +24,13 @@
         android:textSize="@dimen/font_size_three"
         android:gravity="center_vertical"
         android:text="value"/>
+
+    <ImageView
+        android:id="@+id/iv_arror"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_arror_right"
+        android:layout_marginLeft="@dimen/dd_dimen_4px"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"/>
 </LinearLayout>

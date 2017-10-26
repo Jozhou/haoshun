@@ -136,6 +136,7 @@
     <string name="click_clear">一键清空</string>
     <string name="add">添加</string>
     <string name="toast_sel_vehicle">请选择车辆</string>
+    <string name="oil_model">油品型号</string>
     <!-- 养护查询 end-->
 
 </resources>

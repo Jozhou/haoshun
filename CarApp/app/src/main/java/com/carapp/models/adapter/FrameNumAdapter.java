@@ -1,6 +1,8 @@
 package com.carapp.models.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.carapp.R;
+import com.carapp.activity.OilModelActivity;
+import com.carapp.context.IntentCode;
 import com.carapp.models.entry.NameValueEntry;
 import com.corelibrary.utils.DeviceUtils;
 
@@ -62,6 +66,7 @@ public class FrameNumAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.item_frame_num, null);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
 			holder.tvValue = (TextView) convertView.findViewById(R.id.tv_value);
+			holder.ivArrow = (ImageView) convertView.findViewById(R.id.iv_arror);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -69,12 +74,31 @@ public class FrameNumAdapter extends BaseAdapter {
 		final NameValueEntry entry = getItem(position);
 		holder.tvName.setText(entry.name);
 		holder.tvValue.setText(entry.value);
+
+		if (entry.name.equals(mContext.getString(R.string.oil_model)) && !TextUtils.isEmpty(entry.image)) {
+			holder.ivArrow.setVisibility(View.VISIBLE);
+			convertView.setClickable(true);
+			convertView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(mContext, OilModelActivity.class);
+					intent.putExtra(IntentCode.INTENT_OIL_MODEL, entry.image);
+					mContext.startActivity(intent);
+				}
+			});
+
+		} else {
+			holder.ivArrow.setVisibility(View.GONE);
+			convertView.setClickable(false);
+		}
 		return convertView;
 	}
 
 	static class ViewHolder {
 		TextView tvName;
 		TextView tvValue;
+
+		ImageView ivArrow;
 	}
 
 }

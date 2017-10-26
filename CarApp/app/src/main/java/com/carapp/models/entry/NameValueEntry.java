@@ -11,4 +11,6 @@ public class NameValueEntry extends BaseEntry {
 
     public String name = "";
     public String value = "";
+
+    public String image = "";
 }

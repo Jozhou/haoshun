@@ -120,6 +120,10 @@
             android:name=".activity.ConversationQueryDetaillActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity
+            android:name=".activity.OilModelActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>
