@@ -42,13 +42,14 @@ public class GetStoreOperater extends BaseArrayOperater<StoreEntry> {
                 entry.shopname =jsonObject.getString("shopname");
                 entry.image =jsonObject.getString("image");
                 entry.evolution =jsonObject.getInt("evolution");
-                entry.businessstart =jsonObject.getString("businessstart");
-                entry.businessend =jsonObject.getString("businessend");
+//                entry.businessstart =jsonObject.getString("businessstart");
+//                entry.businessend =jsonObject.getString("businessend");
                 entry.tel =jsonObject.getString("tel");
                 entry.shoploacl =jsonObject.getString("shoploacl");
                 entry.url =jsonObject.getString("url");
                 entry.shoplon =jsonObject.getString("shoplon");
                 entry.shoplat =jsonObject.getString("shoplat");
+                entry.businessTime =jsonObject.getString("businessTime");
 
                 arrayEntry.getArray().add(entry);
             }

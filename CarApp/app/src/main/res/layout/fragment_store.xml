@@ -26,7 +26,8 @@
             android:background="@color/white"
             android:paddingTop="@dimen/dd_dimen_20px"
             android:paddingBottom="@dimen/dd_dimen_20px"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:visibility="gone">
             <RadioButton
                 android:id="@+id/rb_all"
                 style="@style/frame_query_tab"
@@ -49,8 +50,7 @@
         <FrameLayout
             android:id="@+id/fl_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dd_dimen_10px">
+            android:layout_height="wrap_content">
             <com.carapp.view.store.StoreListView
                 android:id="@+id/rv_all"
                 android:layout_width="match_parent"

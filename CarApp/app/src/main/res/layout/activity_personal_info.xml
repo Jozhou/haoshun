@@ -26,7 +26,7 @@
             <LinearLayout
                 android:id="@+id/ll_head"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dd_dimen_140px"
+                android:layout_height="@dimen/dd_dimen_180px"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dd_dimen_30px"
@@ -38,8 +38,8 @@
                     android:layout_height="wrap_content">
                     <com.corelibrary.view.CircleImageView
                         android:id="@+id/iv_head"
-                        android:layout_width="@dimen/dd_dimen_100px"
-                        android:layout_height="@dimen/dd_dimen_100px"
+                        android:layout_width="@dimen/dd_dimen_140px"
+                        android:layout_height="@dimen/dd_dimen_140px"
                         android:src="@drawable/ic_launcher"/>
                 </RelativeLayout>
 

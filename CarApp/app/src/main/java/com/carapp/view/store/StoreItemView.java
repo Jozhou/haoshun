@@ -63,7 +63,8 @@ public class StoreItemView extends MRelativeLayout<StoreEntry> {
         } else {
             ivStar.setImageResource(R.drawable.shop_xingxing_1);
         }
-        tvTime.setText(mDataItem.businessstart + "-" + mDataItem.businessend);
+//        tvTime.setText(mDataItem.businessstart + "-" + mDataItem.businessend);
+        tvTime.setText(mDataItem.businessTime);
         tvTel.setText(mDataItem.tel);
         tvAddress.setText(mDataItem.shoploacl);
 //        tvDistance.setText(mDataItem.distance);

@@ -21,6 +21,8 @@ public class StoreEntry extends BaseEntry implements MultiItemEntity {
     public String shoplon = "";
     public String shoplat = "";
 
+    public String businessTime = "";
+
     @Override
     public int getItemType() {
         return 0;

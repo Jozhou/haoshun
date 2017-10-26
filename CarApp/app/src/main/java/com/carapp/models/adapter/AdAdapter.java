@@ -16,6 +16,8 @@ import java.util.List;
 
 public class AdAdapter extends BaseAdapter {
 
+	public static final float AD_RATIO = 9.0f/16;
+
 	private LayoutInflater mInflater;
 	private List<String> mData;
 	private Context mContext;
@@ -52,7 +54,7 @@ public class AdAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.item_ad, null);
 			holder.ivAd = (ImageView) convertView.findViewById(R.id.iv_ad);
 			int width = DeviceUtils.getScreenWidth();
-			int height = width/3;
+			int height = (int) (width * AD_RATIO);
 			ViewGroup.LayoutParams params = holder.ivAd.getLayoutParams();
 			params.width = width;
 			params.height = height;
@@ -61,7 +63,7 @@ public class AdAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Glide.with(mContext).load(getItem(position)).into(holder.ivAd);
+		Glide.with(mContext).load(getItem(position)).dontAnimate().into(holder.ivAd);
 		return convertView;
 	}
 

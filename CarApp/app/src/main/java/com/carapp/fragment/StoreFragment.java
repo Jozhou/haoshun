@@ -107,12 +107,12 @@ public class StoreFragment extends BaseFragment {
         rvRepair.addItemDecoration(new SimpleListItemDecoration(mContext, R.drawable.divider_latest_news));
 
         rvAll.setParams("117.201538", "39.085294", 0);
-        rvConversation.setParams("117.201538", "39.085294", 1);
-        rvRepair.setParams("117.201538", "39.085294", 2);
+//        rvConversation.setParams("117.201538", "39.085294", 1);
+//        rvRepair.setParams("117.201538", "39.085294", 2);
 
         rvAll.refresh();
-        rvConversation.refresh();
-        rvRepair.refresh();
+//        rvConversation.refresh();
+//        rvRepair.refresh();
 
         rgTabs.check(R.id.rb_all);
     }

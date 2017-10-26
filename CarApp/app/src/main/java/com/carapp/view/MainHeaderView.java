@@ -80,7 +80,7 @@ public class MainHeaderView extends MLinearLayout {
         vSecondLine.setLayoutParams(params);
 
         int adWidth = DeviceUtils.getScreenWidth();
-        int adHeight = adWidth/3;
+        int adHeight = (int) (adWidth * AdAdapter.AD_RATIO);
         params = rlAd.getLayoutParams();
         params.width = adWidth;
         params.height = adHeight;
