@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.carapp.R;
+import com.carapp.activity.ActivityWeb;
 import com.carapp.activity.ConversationQuerylActivity;
 import com.carapp.activity.FrameNumQueryActivity;
+import com.carapp.context.Config;
+import com.carapp.context.IntentCode;
 import com.carapp.models.adapter.AdAdapter;
 import com.carapp.models.operater.GetAdOperater;
 import com.corelibrary.models.http.BaseOperater;
@@ -118,17 +121,23 @@ public class MainHeaderView extends MLinearLayout {
         super.onClick(v);
         int id = v.getId();
         if (id == R.id.ll_conversation_know) {
-
+            Intent intent = new Intent(mContext, ActivityWeb.class);
+            intent.putExtra(IntentCode.INTENT_WEB_URL, Config.CONVERSATION_KNOW);
+            mContext.startActivity(intent);
         } else if (id == R.id.ll_conversation_query) {
             Intent intent = new Intent(mContext, ConversationQuerylActivity.class);
             mContext.startActivity(intent);
         } else if (id == R.id.ll_oil_change) {
-
+            Intent intent = new Intent(mContext, ConversationQuerylActivity.class);
+            intent.putExtra(IntentCode.INTENT_QUERY_FROM, ConversationQuerylActivity.TYPE_OIL);
+            mContext.startActivity(intent);
         } else if (id == R.id.ll_frame_num_query) {
             Intent intent = new Intent(mContext, FrameNumQueryActivity.class);
             mContext.startActivity(intent);
         } else if (id == R.id.ll_pro_intro) {
-
+            Intent intent = new Intent(mContext, ActivityWeb.class);
+            intent.putExtra(IntentCode.INTENT_WEB_URL, Config.PROJECT_INTRO);
+            mContext.startActivity(intent);
         }
     }
 }

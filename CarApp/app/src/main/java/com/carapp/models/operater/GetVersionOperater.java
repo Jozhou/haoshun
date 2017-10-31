@@ -20,8 +20,9 @@ public class GetVersionOperater extends BaseArrayOperater<VehicleItemEntry> {
         super(context);
     }
 
-    public void setParams(String series_id, String year_style) {
+    public void setParams(String brand_id, String series_id, String year_style) {
         try {
+            paramsObj.put("brand_id", brand_id);
             paramsObj.put("series_id", series_id);
             paramsObj.put("year_style", year_style);
         } catch (JSONException e) {

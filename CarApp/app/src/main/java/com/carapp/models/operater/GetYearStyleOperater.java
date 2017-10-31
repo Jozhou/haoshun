@@ -20,8 +20,9 @@ public class GetYearStyleOperater extends BaseArrayOperater<VehicleItemEntry> {
         super(context);
     }
 
-    public void setParams(String series_id) {
+    public void setParams(String brand_id, String series_id) {
         try {
+            paramsObj.put("brand_id", brand_id);
             paramsObj.put("series_id", series_id);
         } catch (JSONException e) {
             e.printStackTrace();

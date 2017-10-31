@@ -128,7 +128,7 @@ public class PersonalInfoActivity extends BaseActivity {
     }
 
     private void onSelVehicle() {
-        Intent intent = new Intent(this, SelVehicleActivity.class);
+        Intent intent = new Intent(this, SelBrandActivity.class);
         intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, SelVehicleActivity.FROM_PERSONAL);
         intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_BRAND);
         startActivityForResult(intent, SelVehicleActivity.SEL_BRAND);

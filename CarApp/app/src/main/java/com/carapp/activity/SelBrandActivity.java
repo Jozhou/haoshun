@@ -3,38 +3,33 @@ package com.carapp.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.carapp.R;
 import com.carapp.context.IntentCode;
 import com.carapp.models.entry.VehicleItemEntry;
 import com.carapp.models.operater.UpdateCarcodeOperater;
-import com.carapp.view.vehicle.BrandListView;
-import com.carapp.view.vehicle.SeriesListView;
-import com.carapp.view.vehicle.VersionListView;
-import com.carapp.view.vehicle.YearStyleListView;
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.carapp.view.vehicle.SelBrandView;
 import com.corelibrary.activity.base.BaseActivity;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
-import com.corelibrary.view.adapterview.PullToRefreshMoreView;
-import com.corelibrary.view.decoration.SimpleListItemDecoration;
 
 /**
  * Created by Administrator on 2017/10/9.
  */
 
-public class SelVehicleActivity extends BaseActivity {
+public class SelBrandActivity extends BaseActivity {
 
     @ViewInject("titlebar")
     private TitleBar titleBar;
     @ViewInject("rl_container")
     private RelativeLayout rlContainer;
+    @ViewInject("v_sel_brand")
+    private SelBrandView selBrandView;
 
-    private PullToRefreshMoreView refreshMoreView;
+//    private PullToRefreshMoreView refreshMoreView;
 
     public static final int SEL_BRAND = 1;
     public static final int SEL_SERIES = 2;
@@ -55,7 +50,7 @@ public class SelVehicleActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sel_vehicle);
+        setContentView(R.layout.activity_sel_brand);
     }
 
     @Override
@@ -77,53 +72,31 @@ public class SelVehicleActivity extends BaseActivity {
                 finish();
             }
         });
-    }
 
-    @Override
-    protected void onApplyData() {
-        super.onApplyData();
-        titleBar.setTitle(getTitleRes(type));
-        if (type == SEL_BRAND) {
-            refreshMoreView = new BrandListView(this);
-        } else if (type == SEL_SERIES) {
-            refreshMoreView = new SeriesListView(this);
-            ((SeriesListView)refreshMoreView).setParams(brand.id);
-        } else if (type == SEL_YEAR_STYLE) {
-            refreshMoreView = new YearStyleListView(this);
-            ((YearStyleListView)refreshMoreView).setParams(brand.id, series.id);
-        } else if (type == SEL_VERSION) {
-            refreshMoreView = new VersionListView(this);
-            ((VersionListView)refreshMoreView).setParams(brand.id, series.id, yearStyle.name);
-        }
-        refreshMoreView.addItemDecoration(new SimpleListItemDecoration(this));
-        rlContainer.addView(refreshMoreView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        refreshMoreView.refresh();
-
-        refreshMoreView.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        selBrandView.setOnItemClickListener(new SelBrandView.OnItemClickListener() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                VehicleItemEntry entry = (VehicleItemEntry)adapter.getData().get(position);
+            public void onItemClick(int pos, VehicleItemEntry entry) {
                 if (type == SEL_BRAND) {
-                    Intent intent = new Intent(SelVehicleActivity.this, SelVehicleActivity.class);
-                    intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_SERIES);
+                    Intent intent = new Intent(SelBrandActivity.this, SelVehicleActivity.class);
+                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_SERIES);
                     intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
                     intent.putExtra(IntentCode.INTENT_BRAND, entry);
                     startActivityForResult(intent, SEL_SERIES);
                 } else if (type == SEL_SERIES) {
-                    Intent intent = new Intent(SelVehicleActivity.this, SelVehicleActivity.class);
-                    intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_YEAR_STYLE);
+                    Intent intent = new Intent(SelBrandActivity.this, SelVehicleActivity.class);
+                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_YEAR_STYLE);
                     intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
                     intent.putExtra(IntentCode.INTENT_BRAND, brand);
                     intent.putExtra(IntentCode.INTENT_SERIES, entry);
-                    startActivityForResult(intent, SelVehicleActivity.SEL_YEAR_STYLE);
+                    startActivityForResult(intent, SelBrandActivity.SEL_YEAR_STYLE);
                 } else if (type == SEL_YEAR_STYLE) {
-                    Intent intent = new Intent(SelVehicleActivity.this, SelVehicleActivity.class);
-                    intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_VERSION);
+                    Intent intent = new Intent(SelBrandActivity.this, SelVehicleActivity.class);
+                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_VERSION);
                     intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
                     intent.putExtra(IntentCode.INTENT_BRAND, brand);
                     intent.putExtra(IntentCode.INTENT_SERIES, series);
                     intent.putExtra(IntentCode.INTENT_YEAR_STYLE, entry);
-                    startActivityForResult(intent, SelVehicleActivity.SEL_VERSION);
+                    startActivityForResult(intent, SelBrandActivity.SEL_VERSION);
                 } else if (type == SEL_VERSION) {
                     if (from == FROM_REIGSTER || from == FROM_Conversation) {
                         Intent intent = new Intent();
@@ -140,6 +113,72 @@ public class SelVehicleActivity extends BaseActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    protected void onApplyData() {
+        super.onApplyData();
+        titleBar.setTitle(getTitleRes(type));
+//        if (type == SEL_BRAND) {
+//            refreshMoreView = new BrandListView(this);
+//        } else if (type == SEL_SERIES) {
+//            refreshMoreView = new SeriesListView(this);
+//            ((SeriesListView)refreshMoreView).setParams(brand.id);
+//        } else if (type == SEL_YEAR_STYLE) {
+//            refreshMoreView = new YearStyleListView(this);
+//            ((YearStyleListView)refreshMoreView).setParams(series.id);
+//        } else if (type == SEL_VERSION) {
+//            refreshMoreView = new VersionListView(this);
+//            ((VersionListView)refreshMoreView).setParams(series.id, yearStyle.name);
+//        }
+//        refreshMoreView.addItemDecoration(new SimpleListItemDecoration(this));
+//        rlContainer.addView(refreshMoreView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        refreshMoreView.refresh();
+
+//        refreshMoreView.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                VehicleItemEntry entry = (VehicleItemEntry)adapter.getData().get(position);
+//                if (type == SEL_BRAND) {
+//                    Intent intent = new Intent(SelBrandActivity.this, SelBrandActivity.class);
+//                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_SERIES);
+//                    intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
+//                    intent.putExtra(IntentCode.INTENT_BRAND, entry);
+//                    startActivityForResult(intent, SEL_SERIES);
+//                } else if (type == SEL_SERIES) {
+//                    Intent intent = new Intent(SelBrandActivity.this, SelBrandActivity.class);
+//                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_YEAR_STYLE);
+//                    intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
+//                    intent.putExtra(IntentCode.INTENT_BRAND, brand);
+//                    intent.putExtra(IntentCode.INTENT_SERIES, entry);
+//                    startActivityForResult(intent, SelBrandActivity.SEL_YEAR_STYLE);
+//                } else if (type == SEL_YEAR_STYLE) {
+//                    Intent intent = new Intent(SelBrandActivity.this, SelBrandActivity.class);
+//                    intent.putExtra(IntentCode.INTENT_TYPE, SelBrandActivity.SEL_VERSION);
+//                    intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, from);
+//                    intent.putExtra(IntentCode.INTENT_BRAND, brand);
+//                    intent.putExtra(IntentCode.INTENT_SERIES, series);
+//                    intent.putExtra(IntentCode.INTENT_YEAR_STYLE, entry);
+//                    startActivityForResult(intent, SelBrandActivity.SEL_VERSION);
+//                } else if (type == SEL_VERSION) {
+//                    if (from == FROM_REIGSTER || from == FROM_Conversation) {
+//                        Intent intent = new Intent();
+//                        intent.putExtra(IntentCode.INTENT_BRAND, brand);
+//                        intent.putExtra(IntentCode.INTENT_SERIES, series);
+//                        intent.putExtra(IntentCode.INTENT_YEAR_STYLE, yearStyle);
+//                        intent.putExtra(IntentCode.INTENT_VERSION, entry);
+//                        setResult(RESULT_OK, intent);
+//                        finish();
+//                    } else if (from == FROM_PERSONAL) {
+//                        version = entry;
+//                        updateCarcode();
+//                    }
+//                }
+//            }
+//        });
+
+        selBrandView.refreshData();
     }
 
     private int getTitleRes(int type) {

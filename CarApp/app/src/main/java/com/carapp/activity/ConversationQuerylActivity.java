@@ -9,16 +9,21 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.carapp.R;
+import com.carapp.common.data.Account;
 import com.carapp.context.IntentCode;
 import com.carapp.models.adapter.VehicleQueryItemAdapter;
 import com.carapp.models.entry.VehicleItemEntry;
 import com.carapp.models.entry.VehicleQueryEntry;
+import com.carapp.models.operater.QueryOilOperater;
 import com.carapp.view.vehicle.ConversationQueryWrapper;
+import com.carapp.view.vehicle.OilQueryWrapper;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -41,6 +46,10 @@ public class ConversationQuerylActivity extends BaseActivity {
 
     private List<VehicleQueryEntry> mData;
     VehicleQueryItemAdapter mAdater;
+    public static final int TYPE_CONVERSATION = 1;
+    public static final int TYPE_OIL = 2;
+
+    private int from = TYPE_CONVERSATION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +60,7 @@ public class ConversationQuerylActivity extends BaseActivity {
     @Override
     protected void onQueryArguments(Intent intent) {
         super.onQueryArguments(intent);
+        from = intent.getIntExtra(IntentCode.INTENT_QUERY_FROM, TYPE_CONVERSATION);
     }
 
     @Override
@@ -66,7 +76,7 @@ public class ConversationQuerylActivity extends BaseActivity {
         titleBar.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConversationQuerylActivity.this, SelVehicleActivity.class);
+                Intent intent = new Intent(ConversationQuerylActivity.this, SelBrandActivity.class);
                 intent.putExtra(IntentCode.INTENT_SEL_VEHICLE_FROM, SelVehicleActivity.FROM_Conversation);
                 intent.putExtra(IntentCode.INTENT_TYPE, SelVehicleActivity.SEL_BRAND);
                 startActivityForResult(intent, SelVehicleActivity.SEL_BRAND);
@@ -77,7 +87,14 @@ public class ConversationQuerylActivity extends BaseActivity {
     @Override
     protected void onApplyData() {
         super.onApplyData();
-        mData = ConversationQueryWrapper.get().getData();
+        if (from == TYPE_CONVERSATION) {
+            titleBar.setTitle(R.string.conservation_query);
+            mData = ConversationQueryWrapper.get().getData();
+        } else {
+            titleBar.setTitle(R.string.oil_change_book);
+            mData = OilQueryWrapper.get().getData();
+        }
+
         mAdater = new VehicleQueryItemAdapter(this, mData);
         lvConversation.setAdapter(mAdater);
 
@@ -101,7 +118,12 @@ public class ConversationQuerylActivity extends BaseActivity {
                 VehicleQueryEntry entry = new VehicleQueryEntry();
                 entry.detail = getResources().getString(R.string.show_vehicle2, brand.name, series.name, yearStyle.name, version.name);
                 entry.carcode = version.carcode;
-                ConversationQueryWrapper.get().add(entry);
+                if (from == TYPE_CONVERSATION) {
+                    ConversationQueryWrapper.get().add(entry);
+                } else {
+                    OilQueryWrapper.get().add(entry);
+                }
+
                 mAdater.notifyDataSetChanged();
                 tvClear.setVisibility(View.VISIBLE);
             }
@@ -113,7 +135,11 @@ public class ConversationQuerylActivity extends BaseActivity {
         super.onClick(v);
         int id = v.getId();
         if (id == R.id.tv_clear) {
-            ConversationQueryWrapper.get().clear();
+            if (from == TYPE_CONVERSATION) {
+                ConversationQueryWrapper.get().clear();
+            } else {
+                OilQueryWrapper.get().clear();
+            }
             mAdater.setSelPos(0);
             mAdater.notifyDataSetChanged();
             tvClear.setVisibility(View.GONE);
@@ -122,9 +148,27 @@ public class ConversationQuerylActivity extends BaseActivity {
                 DialogUtils.showToastMessage(R.string.toast_sel_vehicle);
                 return;
             }
-            Intent intent = new Intent(this, ConversationQueryDetaillActivity.class);
-            intent.putExtra(IntentCode.INTENT_VEHICLE_QUERY_ITEM, mAdater.getSelItem());
-            startActivity(intent);
+            if (from == TYPE_CONVERSATION) {
+                Intent intent = new Intent(this, ConversationQueryDetaillActivity.class);
+                intent.putExtra(IntentCode.INTENT_VEHICLE_QUERY_ITEM, mAdater.getSelItem());
+                startActivity(intent);
+            } else {
+                queryOil();
+            }
         }
+    }
+
+    private void queryOil() {
+        QueryOilOperater operater = new QueryOilOperater(this);
+        operater.setParams(mAdater.getSelItem().carcode);
+        operater.onReq(new BaseOperater.RspListener() {
+            @Override
+            public void onRsp(boolean success, Object obj) {
+                if (success) {
+
+                }
+            }
+        });
+
     }
 }

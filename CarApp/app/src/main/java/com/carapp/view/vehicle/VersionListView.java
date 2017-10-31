@@ -18,6 +18,7 @@ import com.corelibrary.view.adapterview.PullToRefreshMoreView;
 public class VersionListView extends PullToRefreshMoreView<VehicleItemEntry> {
 
     private GetVersionOperater operater;
+    private String brand_id = "";
     private String series_id = "";
     private String year_style = "";
 
@@ -33,7 +34,8 @@ public class VersionListView extends PullToRefreshMoreView<VehicleItemEntry> {
         super(context, attrs, defStyle);
     }
 
-    public void setParams(String series_id, String year_style) {
+    public void setParams(String brand_id, String series_id, String year_style) {
+        this.brand_id = brand_id;
         this.series_id = series_id;
         this.year_style = year_style;
     }
@@ -42,7 +44,7 @@ public class VersionListView extends PullToRefreshMoreView<VehicleItemEntry> {
     protected IArrayOperater<VehicleItemEntry> createMode() {
         if (operater == null) {
             operater = new GetVersionOperater(mContext);
-            operater.setParams(series_id, year_style);
+            operater.setParams(brand_id, series_id, year_style);
             operater.setShowLoading(false);
         }
         return operater;

@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import com.carapp.R;
 import com.carapp.common.data.Account;
+import com.carapp.context.Config;
+import com.carapp.context.IntentCode;
 import com.corelibrary.activity.base.BaseActivity;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
@@ -22,6 +24,13 @@ public class SettingsActivity extends BaseActivity {
     private TitleBar titlebar;
     @ViewInject(value = "btn_logout", setClickListener = true)
     private Button btnLogout;
+
+    @ViewInject(value = "ll_feedback", setClickListener = true)
+    private View vFeedback;
+    @ViewInject(value = "ll_service", setClickListener = true)
+    private View vService;
+    @ViewInject(value = "ll_about_us", setClickListener = true)
+    private View vAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +55,18 @@ public class SettingsActivity extends BaseActivity {
         int id = v.getId();
         if (id == R.id.btn_logout) {
             logout();
+        } else if (id == R.id.ll_feedback) {
+            Intent intent = new Intent(this, ActivityWeb.class);
+            intent.putExtra(IntentCode.INTENT_WEB_URL, Config.FEEDBACK);
+            startActivity(intent);
+        } else if (id == R.id.ll_service) {
+            Intent intent = new Intent(this, ActivityWeb.class);
+            intent.putExtra(IntentCode.INTENT_WEB_URL, Config.SERVICE_ITEM);
+            startActivity(intent);
+        } else if (id == R.id.ll_about_us) {
+            Intent intent = new Intent(this, ActivityWeb.class);
+            intent.putExtra(IntentCode.INTENT_WEB_URL, Config.ABOUT_US);
+            startActivity(intent);
         }
     }
 

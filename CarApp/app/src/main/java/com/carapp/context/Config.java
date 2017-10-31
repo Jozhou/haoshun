@@ -27,7 +27,13 @@ public class Config extends com.corelibrary.context.Config {
 	private static String IMG_URL = "http://223.202.60.138:8030/teaching/static/upload/images/";
 
 	private static String VIDEO_URL = "http://223.202.60.138:8030/video/";
-	
+
+	public static String CONVERSATION_KNOW = "http://47.92.150.165:7433/APP/curing";
+	public static String PROJECT_INTRO = "http://47.92.150.165:7433/APP/introduce";
+	public static String SERVICE_ITEM = "http://47.92.150.165:7433/APP/clause";
+	public static String ABOUT_US = "http://47.92.150.165:7433/APP/AboutUs";
+	public static String FEEDBACK = "http://47.92.150.165:7433/APP/feedback";
+
 	/**
 	 * 获取url请求的base地址
 	 * @return

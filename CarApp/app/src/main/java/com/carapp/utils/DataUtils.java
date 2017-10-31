@@ -28,6 +28,7 @@ public class DataUtils {
 	private static final String KEY_ACCOUNT_TEL = "account_tel";
 	private static final String KEY_ACCOUNT_CARCODE = "account_carcode";
 	private static final String KEY_CONVERSATION_QUERY_ITEM = "conversation_query_item_";
+	private static final String KEY_OIL_QUERY_ITEM = "oil_query_item_";
     
     /**
      * 上次发生crash的时间戳
@@ -142,6 +143,18 @@ public class DataUtils {
 
 	public static void clearConversationQueryItem(int uid) {
 		PreferenceUtils.remove(KEY_CONVERSATION_QUERY_ITEM + uid);
+	}
+
+	public static void setOilQueryItem(int uid, String queryItem) {
+		PreferenceUtils.putString(KEY_OIL_QUERY_ITEM + uid, queryItem);
+	}
+
+	public static String getOilQueryItem(int uid) {
+		return PreferenceUtils.getString(KEY_OIL_QUERY_ITEM + uid);
+	}
+
+	public static void clearOilQueryItem(int uid) {
+		PreferenceUtils.remove(KEY_OIL_QUERY_ITEM + uid);
 	}
 	
 }
