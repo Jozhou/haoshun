@@ -12,6 +12,9 @@ import com.carapp.activity.CityListActivity;
 import com.carapp.context.IntentCode;
 import com.carapp.models.entry.CityItemEntry;
 import com.carapp.models.entry.NewsEntry;
+import com.carapp.utils.location.DLocation;
+import com.carapp.utils.location.LocationListener;
+import com.carapp.utils.location.LocationManager;
 import com.carapp.view.MainHeaderView;
 import com.carapp.view.news.LatestNewsListView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -63,6 +66,7 @@ public class MainFragment extends BaseFragment {
         lvNews.addHeaderView(mainHeaderView);
         lvNews.addItemDecoration(new SimpleListItemDecoration(mContext, R.drawable.divider_latest_news));
         lvNews.refresh();
+
     }
 
     @Override
@@ -88,6 +92,19 @@ public class MainFragment extends BaseFragment {
                 CityItemEntry entry = (CityItemEntry) data.getSerializableExtra(IntentCode.INTENT_CITY_ITEM);
                 tvLeft.setText(entry.province_name);
             }
+        }
+    }
+
+    private static class CityLocationListener extends LocationListener {
+
+        @Override
+        public void onLocationChanged(DLocation location) {
+
+        }
+
+        @Override
+        public void onlocationFail() {
+
         }
     }
 }

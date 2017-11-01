@@ -29,6 +29,7 @@
             android:textSize="@dimen/font_size_three"
             android:textColor="@color/font_color_four"
             android:drawableRight="@drawable/icon_arrow_down"
+            android:drawablePadding="@dimen/dd_dimen_10px"
             android:text="天津市" />
 
         <TextView

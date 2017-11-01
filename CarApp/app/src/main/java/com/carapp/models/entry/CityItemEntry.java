@@ -16,6 +16,13 @@ public class CityItemEntry extends BaseEntry implements MultiItemEntity, Indexab
 
     private String pinyin;
 
+    public CityItemEntry() {
+    }
+
+    public CityItemEntry(String province_name) {
+        this.province_name = province_name;
+    }
+
     @Override
     public int getItemType() {
         return 0;

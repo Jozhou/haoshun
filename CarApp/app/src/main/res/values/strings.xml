@@ -144,6 +144,8 @@
 
     <!-- 地图相关 start -->
     <string name="sel_city">选择城市</string>
+    <string name="location_response_error">定位失败，请稍后再试</string>
+    <string name="location_fail">定位失败</string>
     <!-- 地图相关 end -->
 
 </resources>
