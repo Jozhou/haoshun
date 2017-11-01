@@ -72,7 +72,7 @@ public class StoreFragment extends BaseFragment {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 StoreEntry entry = (StoreEntry) adapter.getData().get(position);
                 Intent intent = new Intent(mContext, ActivityWeb.class);
-                intent.putExtra(IntentCode.INTENT_WEB_URL, "http://" + entry.url);
+                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 startActivity(intent);
             }
         });
@@ -82,7 +82,7 @@ public class StoreFragment extends BaseFragment {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 StoreEntry entry = (StoreEntry) adapter.getData().get(position);
                 Intent intent = new Intent(mContext, ActivityWeb.class);
-                intent.putExtra(IntentCode.INTENT_WEB_URL, "http://" + entry.url);
+                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 startActivity(intent);
             }
         });
@@ -92,7 +92,7 @@ public class StoreFragment extends BaseFragment {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 StoreEntry entry = (StoreEntry) adapter.getData().get(position);
                 Intent intent = new Intent(mContext, ActivityWeb.class);
-                intent.putExtra(IntentCode.INTENT_WEB_URL, "http://" + entry.url);
+                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 startActivity(intent);
             }
         });

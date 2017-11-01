@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.carapp.R;
+import com.carapp.activity.CollectActivity;
 import com.carapp.activity.PersonalInfoActivity;
 import com.carapp.activity.SettingsActivity;
 import com.carapp.common.data.Account;
@@ -54,6 +55,9 @@ public class MineFragment extends BaseFragment {
             mContext.startActivity(intent);
         } else if (id == R.id.ll_settings) {
             Intent intent = new Intent(mContext, SettingsActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.ll_my_coll) {
+            Intent intent = new Intent(mContext, CollectActivity.class);
             startActivity(intent);
         }
     }

@@ -2,7 +2,7 @@ package com.carapp.models.operater;
 
 import android.content.Context;
 
-import com.carapp.models.entry.VehicleItemEntry;
+import com.carapp.models.entry.CityItemEntry;
 import com.corelibrary.models.http.BaseOperater;
 
 import org.json.JSONArray;
@@ -16,11 +16,11 @@ import java.util.List;
  * Created by Administrator on 2017/10/9.
  */
 
-public class GetBrandOperater2 extends BaseOperater {
+public class GetCityOperater extends BaseOperater {
 
-    List<VehicleItemEntry> vehicleItemEntries = new ArrayList<>();
+    List<CityItemEntry> cityItemEntries = new ArrayList<>();
 
-    public GetBrandOperater2(Context context) {
+    public GetCityOperater(Context context) {
         super(context);
         setParams();
     }
@@ -36,20 +36,20 @@ public class GetBrandOperater2 extends BaseOperater {
 
     @Override
     protected String getUrlAction() {
-        return "/vehicle/brand";
+        return "/page/city";
     }
 
     @Override
     protected void onParser(JSONObject jo) {
-        vehicleItemEntries = new ArrayList<>();
+        cityItemEntries = new ArrayList<>();
         try {
-            JSONArray array = jo.getJSONObject("content").getJSONArray("brand");
+            JSONArray array = jo.getJSONObject("content").getJSONArray("list");
             for (int i = 0; i < array.length(); i ++) {
                 JSONObject jsonObject = array.getJSONObject(i);
-                VehicleItemEntry entry = new VehicleItemEntry();
-                entry.id =jsonObject.getString("brand_id");
-                entry.name =jsonObject.getString("brand_name");
-                vehicleItemEntries.add(entry);
+                CityItemEntry entry = new CityItemEntry();
+                entry.province_id =jsonObject.getString("province_id");
+                entry.province_name =jsonObject.getString("province_name");
+                cityItemEntries.add(entry);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -61,8 +61,8 @@ public class GetBrandOperater2 extends BaseOperater {
 
     }
 
-    public List<VehicleItemEntry> getVehicleItemEntries() {
-        return this.vehicleItemEntries;
+    public List<CityItemEntry> getCityItemEntries() {
+        return cityItemEntries;
     }
 
 }

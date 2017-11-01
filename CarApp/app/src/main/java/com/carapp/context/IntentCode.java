@@ -23,4 +23,5 @@ public class IntentCode {
     public static final String INTENT_OIL_MODEL = "oil_model";
 
     public static final String INTENT_QUERY_FROM = "query_from";
+    public static final String INTENT_CITY_ITEM = "city_item";
 }

@@ -142,4 +142,8 @@
     <!-- 换油宝典 start-->
     <!-- 换油宝典 end-->
 
+    <!-- 地图相关 start -->
+    <string name="sel_city">选择城市</string>
+    <!-- 地图相关 end -->
+
 </resources>

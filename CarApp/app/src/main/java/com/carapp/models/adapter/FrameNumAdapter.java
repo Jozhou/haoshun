@@ -15,6 +15,7 @@ import com.carapp.R;
 import com.carapp.activity.OilModelActivity;
 import com.carapp.context.IntentCode;
 import com.carapp.models.entry.NameValueEntry;
+import com.carapp.view.popup.PopShowPic;
 import com.corelibrary.utils.DeviceUtils;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class FrameNumAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private List<NameValueEntry> mData;
 	private Context mContext;
+	private PopShowPic popShowPic;
 
 	public FrameNumAdapter(Context context) {
 		this.mContext = context;
@@ -34,6 +36,7 @@ public class FrameNumAdapter extends BaseAdapter {
 		this.mContext = context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.mData = data;
+		this.popShowPic = new PopShowPic(context);
 	}
 
 	public void setData(List<NameValueEntry> data) {
@@ -81,9 +84,10 @@ public class FrameNumAdapter extends BaseAdapter {
 			convertView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(mContext, OilModelActivity.class);
-					intent.putExtra(IntentCode.INTENT_OIL_MODEL, entry.image);
-					mContext.startActivity(intent);
+//					Intent intent = new Intent(mContext, OilModelActivity.class);
+//					intent.putExtra(IntentCode.INTENT_OIL_MODEL, entry.image);
+//					mContext.startActivity(intent);
+					popShowPic.setData(entry.image);
 				}
 			});
 

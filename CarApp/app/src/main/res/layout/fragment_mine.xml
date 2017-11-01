@@ -18,7 +18,7 @@
             android:layout_height="@dimen/dd_dimen_96px"
             android:text="@string/personal_center"
             android:textColor="@color/font_color_four"
-            android:textSize="@dimen/dd_dimen_34px"
+            android:textSize="@dimen/font_size_one"
             android:gravity="center"/>
 
         <LinearLayout

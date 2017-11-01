@@ -191,9 +191,9 @@
         <item name="android:paddingRight">@dimen/dd_dimen_30px</item>
     </style>
 
-    <style name="pop_confirm">
-        <item name="android:windowExitAnimation">@anim/bottom_out</item>
-        <item name="android:windowBackground">@null</item>
+    <style name="pop_show_pic">
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+        <item name="android:windowBackground">@anim/fade_in</item>
     </style>
 
 </resources>

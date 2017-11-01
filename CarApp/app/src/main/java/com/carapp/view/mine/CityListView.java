@@ -1,4 +1,4 @@
-package com.carapp.view.vehicle;
+package com.carapp.view.mine;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -6,11 +6,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.carapp.R;
-import com.carapp.models.adapter.BrandAdapter;
-import com.carapp.models.entry.VehicleItemEntry;
-import com.carapp.models.operater.GetBrandOperater2;
+import com.carapp.models.adapter.CityAdapter;
+import com.carapp.models.entry.CityItemEntry;
+import com.carapp.models.operater.GetCityOperater;
 import com.corelibrary.models.http.BaseOperater;
-import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.loading.FrameLayout;
 
@@ -23,29 +22,29 @@ import me.yokeyword.indexablerv.IndexableLayout;
  * Created by Administrator on 2017/10/31.
  */
 
-public class SelBrandView extends FrameLayout {
+public class CityListView extends FrameLayout {
 
     @ViewInject("indexableLayout")
     private IndexableLayout indexableLayout;
 
-    private BrandAdapter mAdapter;
-    private List<VehicleItemEntry> vehicleItemEntries;
+    private CityAdapter mAdapter;
+    private List<CityItemEntry> cityItemEntries;
 
-    public SelBrandView(Context context) {
+    public CityListView(Context context) {
         super(context);
     }
 
-    public SelBrandView(Context context, AttributeSet attrs) {
+    public CityListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SelBrandView(Context context, AttributeSet attrs, int defStyle) {
+    public CityListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.view_sel_brand;
+        return R.layout.view_city_list;
     }
 
     @Override
@@ -58,12 +57,12 @@ public class SelBrandView extends FrameLayout {
         super.onApplyData();
         indexableLayout.setLayoutManager(new LinearLayoutManager(mContext));
         indexableLayout.setCompareMode(IndexableLayout.MODE_FAST);
-        mAdapter = new BrandAdapter(mContext);
+        mAdapter = new CityAdapter(mContext);
         indexableLayout.setAdapter(mAdapter);
 
-        mAdapter.setOnItemContentClickListener(new IndexableAdapter.OnItemContentClickListener<VehicleItemEntry>() {
+        mAdapter.setOnItemContentClickListener(new IndexableAdapter.OnItemContentClickListener<CityItemEntry>() {
             @Override
-            public void onItemClick(View v, int originalPosition, int currentPosition, VehicleItemEntry entity) {
+            public void onItemClick(View v, int originalPosition, int currentPosition, CityItemEntry entity) {
                 if (originalPosition >= 0) {
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(originalPosition, entity);
@@ -74,21 +73,21 @@ public class SelBrandView extends FrameLayout {
     }
 
     public void refreshData() {
-        getBrandData();
+        getCityData();
     }
 
-    private void getBrandData() {
-        final GetBrandOperater2 operater = new GetBrandOperater2(mContext);
+    private void getCityData() {
+        final GetCityOperater operater = new GetCityOperater(mContext);
         operater.onReq(new BaseOperater.RspListener() {
             @Override
             public void onRsp(boolean success, Object obj) {
                 if (success) {
-                    vehicleItemEntries = operater.getVehicleItemEntries();
-                    if (vehicleItemEntries.size() == 0) {
+                    cityItemEntries = operater.getCityItemEntries();
+                    if (cityItemEntries.size() == 0) {
                         gotoBlank();
                     } else {
                         gotoSuccessful();
-                        mAdapter.setDatas(vehicleItemEntries);
+                        mAdapter.setDatas(cityItemEntries);
                     }
                 } else {
                     gotoError();
@@ -104,7 +103,7 @@ public class SelBrandView extends FrameLayout {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int pos, VehicleItemEntry entry);
+        void onItemClick(int pos, CityItemEntry entry);
     }
 
     @Override

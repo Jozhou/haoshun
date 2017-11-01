@@ -2,6 +2,7 @@ package com.carapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.carapp.R;
 import com.carapp.common.data.Account;
+import com.carapp.context.Config;
 import com.carapp.context.IntentCode;
 import com.carapp.models.adapter.VehicleQueryItemAdapter;
 import com.carapp.models.entry.VehicleItemEntry;
@@ -159,13 +161,18 @@ public class ConversationQuerylActivity extends BaseActivity {
     }
 
     private void queryOil() {
-        QueryOilOperater operater = new QueryOilOperater(this);
+        final QueryOilOperater operater = new QueryOilOperater(this);
         operater.setParams(mAdater.getSelItem().carcode);
         operater.onReq(new BaseOperater.RspListener() {
             @Override
             public void onRsp(boolean success, Object obj) {
                 if (success) {
-
+                    String url = operater.getUrl();
+                    if (!TextUtils.isEmpty(url)) {
+                        Intent intent = new Intent(ConversationQuerylActivity.this, ActivityWeb.class);
+                        intent.putExtra(IntentCode.INTENT_WEB_URL, url);
+                        startActivity(intent);
+                    }
                 }
             }
         });

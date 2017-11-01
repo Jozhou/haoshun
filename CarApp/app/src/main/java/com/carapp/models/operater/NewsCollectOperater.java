@@ -10,21 +10,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by Administrator on 2017/9/30.
+ * Created by Administrator on 2017/10/9.
  */
 
-public class QueryOilOperater extends BaseOperater {
+public class NewsCollectOperater extends BaseOperater {
 
-    private String url;
+    private int collectetimes;
 
-    public QueryOilOperater(Context context) {
+    public NewsCollectOperater(Context context) {
         super(context);
     }
 
-    public void setParams(String carcode) {
+    public void setParams(int news_id) {
         try {
             paramsObj.put("user_id", Account.get().user_id);
-            paramsObj.put("carcode", carcode);
+            paramsObj.put("news_id", news_id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -32,14 +32,14 @@ public class QueryOilOperater extends BaseOperater {
 
     @Override
     protected String getUrlAction() {
-        return "/vehicle/changeoil";
+        return "/page/collecte";
     }
 
     @Override
-    protected void onParser(JSONObject jsonObject) {
+    protected void onParser(JSONObject jo) {
         try {
-            JSONObject obj = jsonObject.getJSONObject("content");
-            url = obj.optString("url");
+            JSONObject obj = jo.getJSONObject("content");
+            collectetimes = obj.optInt("collectetimes");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -47,9 +47,10 @@ public class QueryOilOperater extends BaseOperater {
 
     @Override
     protected void onParser(JSONArray response) {
+
     }
 
-    public String getUrl() {
-        return url;
+    public int getCollectetimes() {
+        return collectetimes;
     }
 }
