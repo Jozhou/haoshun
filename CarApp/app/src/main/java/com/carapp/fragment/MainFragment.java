@@ -2,6 +2,8 @@ package com.carapp.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.carapp.utils.location.LocationListener;
 import com.carapp.utils.location.LocationManager;
 import com.carapp.view.MainHeaderView;
 import com.carapp.view.news.LatestNewsListView;
+import com.carapp.view.popup.PopShare;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.corelibrary.fragment.base.BaseFragment;
 import com.corelibrary.utils.ButtonUtils;
@@ -30,6 +33,8 @@ import com.corelibrary.view.decoration.SimpleListItemDecoration;
 
 public class MainFragment extends BaseFragment {
 
+    @ViewInject("root")
+    private View vRoot;
     @ViewInject("lv_news")
     private LatestNewsListView lvNews;
     @ViewInject(value = "titlebar_lefttext", setClickListener = true)
@@ -38,6 +43,8 @@ public class MainFragment extends BaseFragment {
     private ImageView ivRight;
 
     private MainHeaderView mainHeaderView;
+
+    private PopShare popShare;
 
     private static final int SEL_CITY = 1001;
 
@@ -59,6 +66,7 @@ public class MainFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -69,6 +77,7 @@ public class MainFragment extends BaseFragment {
         lvNews.addItemDecoration(new SimpleListItemDecoration(mContext, R.drawable.divider_latest_news));
         lvNews.refresh();
 
+        popShare = new PopShare(mContext);
     }
 
     @Override
@@ -82,6 +91,7 @@ public class MainFragment extends BaseFragment {
             Intent intent = new Intent(mContext, CityListActivity.class);
             startActivityForResult(intent, SEL_CITY);
         } else if (id == R.id.titlebar_righticon) {
+            popShare.showAtLocation(vRoot, Gravity.BOTTOM, 0, 0);
 
         }
     }
@@ -97,16 +107,14 @@ public class MainFragment extends BaseFragment {
         }
     }
 
-    private static class CityLocationListener extends LocationListener {
-
-        @Override
-        public void onLocationChanged(DLocation location) {
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (popShare != null) {
+                popShare.dismiss();
+                return true;
+            }
         }
-
-        @Override
-        public void onlocationFail() {
-
-        }
+        return super.onKeyDown(keyCode, event);
     }
 }

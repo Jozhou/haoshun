@@ -30,6 +30,11 @@
         <item name="android:layout_height">@dimen/dd_dimen_2px</item>
     </style>
 
+    <style name="line_hor4">
+        <item name="android:background">@color/font_color_three</item>
+        <item name="android:layout_height">@dimen/dd_dimen_2px</item>
+    </style>
+
     <style name="line_ver1">
         <item name="android:background">@color/line_color1</item>
         <item name="android:layout_width">@dimen/dd_dimen_2px</item>
@@ -194,6 +199,16 @@
     <style name="pop_show_pic">
         <item name="android:windowExitAnimation">@anim/fade_out</item>
         <item name="android:windowBackground">@anim/fade_in</item>
+    </style>
+
+    <style name="pop_share_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/font_color_one</item>
+        <item name="android:textSize">@dimen/font_size_three</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">@dimen/dd_dimen_2px</item>
     </style>
 
 </resources>

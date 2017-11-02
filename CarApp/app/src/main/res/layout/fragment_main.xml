@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/root">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,7 +40,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textColor="@color/title_color"
-            android:textSize="@dimen/dd_dimen_34px"
+            android:textSize="@dimen/font_size_one"
             android:textStyle="bold" />
         <ImageView
             android:id="@+id/titlebar_title_icon"
@@ -67,7 +68,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="@dimen/dd_dimen_34px"
+            android:textSize="@dimen/font_size_one"
             android:visibility="gone" />
     </RelativeLayout>
 
