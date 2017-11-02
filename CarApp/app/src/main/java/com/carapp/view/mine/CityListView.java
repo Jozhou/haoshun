@@ -1,5 +1,6 @@
 package com.carapp.view.mine;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import com.carapp.R;
 import com.carapp.models.adapter.CityAdapter;
+import com.carapp.models.adapter.GpsHeaderAdapter;
 import com.carapp.models.entry.CityItemEntry;
 import com.carapp.models.operater.GetCityOperater;
 import com.carapp.utils.location.DLocation;
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.yokeyword.indexablerv.IndexableAdapter;
-import me.yokeyword.indexablerv.IndexableHeaderAdapter;
 import me.yokeyword.indexablerv.IndexableLayout;
 import me.yokeyword.indexablerv.SimpleHeaderAdapter;
 
@@ -37,10 +38,10 @@ public class CityListView extends FrameLayout {
     private List<CityItemEntry> cityItemEntries;
 
     private SimpleHeaderAdapter mHotCityAdapter;
-    private SimpleHeaderAdapter mGpsHeaderAdapter;
+    private GpsHeaderAdapter mGpsHeaderAdapter;
     private List<CityItemEntry> gpsCity;
 
-
+    boolean isLocSucc = false;
 
     public CityListView(Context context) {
         super(context);
@@ -77,7 +78,7 @@ public class CityListView extends FrameLayout {
         indexableLayout.addHeaderAdapter(mHotCityAdapter);
         // 定位
         gpsCity = iniyGPSCityDatas();
-        mGpsHeaderAdapter = new SimpleHeaderAdapter<>(mAdapter, "", "当前城市", gpsCity);
+        mGpsHeaderAdapter = new GpsHeaderAdapter(mContext, "", "当前城市", gpsCity);
         indexableLayout.addHeaderAdapter(mGpsHeaderAdapter);
 
         mAdapter.setOnItemContentClickListener(new IndexableAdapter.OnItemContentClickListener<CityItemEntry>() {
@@ -85,17 +86,20 @@ public class CityListView extends FrameLayout {
             public void onItemClick(View v, int originalPosition, int currentPosition, CityItemEntry entity) {
                 if (originalPosition >= 0) {
                     if (onItemClickListener != null) {
-                        onItemClickListener.onItemClick(originalPosition, entity);
+                        onItemClickListener.onItemClick(entity);
                     }
                 }
             }
         });
 
-        mGpsHeaderAdapter.setOnItemHeaderClickListener(new IndexableHeaderAdapter.OnItemHeaderClickListener() {
+        mGpsHeaderAdapter.setOnItemClickListener(new CityAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, int currentPosition, Object entity) {
+            public void onItemClick(CityItemEntry entry) {
+                if (!isLocSucc) {
+                    return;
+                }
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(currentPosition, (CityItemEntry) entity);
+                    onItemClickListener.onItemClick(entry);
                 }
             }
         });
@@ -131,8 +135,13 @@ public class CityListView extends FrameLayout {
         LocationManager.getInstance().registLocationListener(new LocationListener() {
             @Override
             public void onLocationChanged(DLocation location) {
+                Activity activity = (Activity) mContext;
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
                 gpsCity.get(0).province_name = location.getProvince();
                 mGpsHeaderAdapter.notifyDataSetChanged();
+                isLocSucc = true;
             }
 
             @Override
@@ -150,7 +159,7 @@ public class CityListView extends FrameLayout {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int pos, CityItemEntry entry);
+        void onItemClick(CityItemEntry entry);
     }
 
     @Override

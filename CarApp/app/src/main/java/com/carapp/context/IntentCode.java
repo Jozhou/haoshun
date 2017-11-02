@@ -24,4 +24,7 @@ public class IntentCode {
 
     public static final String INTENT_QUERY_FROM = "query_from";
     public static final String INTENT_CITY_ITEM = "city_item";
+    public static final String INTENT_NEWS_ITEM = "news_item";
+    public static final String INTENT_STORE_ITEM = "store_item";
+    public static final String INTENT_STORE_LIST = "store_list";
 }

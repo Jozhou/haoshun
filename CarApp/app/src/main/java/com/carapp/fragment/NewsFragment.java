@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.carapp.R;
 import com.carapp.activity.ActivityWeb;
+import com.carapp.activity.ActivityWebNews;
 import com.carapp.context.IntentCode;
 import com.carapp.models.entry.NewsEntry;
 import com.carapp.view.news.NewsListView;
@@ -33,8 +34,9 @@ public class NewsFragment extends BaseFragment {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 NewsEntry entry = (NewsEntry) adapter.getData().get(position);
-                Intent intent = new Intent(mContext, ActivityWeb.class);
+                Intent intent = new Intent(mContext, ActivityWebNews.class);
                 intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
+                intent.putExtra(IntentCode.INTENT_NEWS_ITEM, entry);
                 startActivity(intent);
             }
         });

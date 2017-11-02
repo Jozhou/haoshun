@@ -8,8 +8,10 @@ import android.view.View;
 import com.carapp.R;
 import com.carapp.models.entry.StoreEntry;
 import com.carapp.models.operater.GetStoreOperater;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.corelibrary.models.http.IArrayOperater;
 import com.corelibrary.view.adapterview.PullToRefreshMoreView;
+import com.corelibrary.view.layoutview.ILayoutView;
 
 import org.json.JSONException;
 
@@ -56,6 +58,11 @@ public class StoreListView extends PullToRefreshMoreView<StoreEntry> {
     }
 
     @Override
+    protected void convert(BaseViewHolder holder, StoreEntry item) {
+        ((StoreItemView)holder.itemView).setDataSource(item, userlon, userlat);
+    }
+
+    @Override
     public void refresh() {
         getFirstPage(false, true);
     }
@@ -68,5 +75,22 @@ public class StoreListView extends PullToRefreshMoreView<StoreEntry> {
         this.userlon = userlon;
         this.userlat = userlat;
         this.shoptype = shoptype;
+    }
+
+    @Override
+    public void onApplyLoadingData() {
+        if (onLoadingDataListener != null) {
+            onLoadingDataListener.onLoadingData();
+        }
+    }
+
+    private OnLoadingDataListener onLoadingDataListener;
+
+    public void setOnLoadingDataListener(OnLoadingDataListener onLoadingDataListener) {
+        this.onLoadingDataListener = onLoadingDataListener;
+    }
+
+    public interface OnLoadingDataListener {
+        void onLoadingData();
     }
 }

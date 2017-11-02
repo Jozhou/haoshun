@@ -8,6 +8,7 @@ import com.corelibrary.models.entry.BaseEntry;
  */
 public class NewsEntry extends BaseEntry implements MultiItemEntity {
 
+    public int news_id;
     public String title = "";
     public String imgurl = "";
     public String create_date = "";

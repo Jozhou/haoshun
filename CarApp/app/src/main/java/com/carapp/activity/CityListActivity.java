@@ -42,7 +42,7 @@ public class CityListActivity extends BaseActivity {
 
         cityListView.setOnItemClickListener(new CityListView.OnItemClickListener() {
             @Override
-            public void onItemClick(int pos, CityItemEntry entry) {
+            public void onItemClick(CityItemEntry entry) {
                 Intent intent = new Intent();
                 intent.putExtra(IntentCode.INTENT_CITY_ITEM, entry);
                 setResult(RESULT_OK, intent);

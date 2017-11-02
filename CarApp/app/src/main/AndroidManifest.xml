@@ -140,6 +140,24 @@
             android:name=".activity.CollectActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity
+            android:name=".activity.ActivityWebNews"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:process=":news"></activity>
+
+        <activity
+            android:name=".activity.ActivityWebStore"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:process=":store"></activity>
+
+        <activity
+            android:name=".activity.StoreMapActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

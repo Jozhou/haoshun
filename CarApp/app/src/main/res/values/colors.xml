@@ -24,4 +24,6 @@
     <color name="bg_title">@color/font_color_three</color>
     
     <color name="bg_transparent">#50000000</color>
+    <color name="web_order">#32338d</color>
+
 </resources>

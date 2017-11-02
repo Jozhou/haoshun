@@ -28,6 +28,7 @@ public class GetNewsOperater extends BaseArrayOperater<NewsEntry> {
             for (int i = 0; i < array.length(); i ++) {
                 JSONObject jsonObject = array.getJSONObject(i);
                 NewsEntry entry = new NewsEntry();
+                entry.news_id = jsonObject.getInt("news_id");
                 entry.imgurl =jsonObject.getString("imgurl");
                 entry.title =jsonObject.getString("title");
                 entry.create_date =jsonObject.getString("create_date");

@@ -144,7 +144,7 @@ public class LocationManager {
 				break;
 			}
 		}
-		int newInterval = 10 * 1000;
+		int newInterval = 2 * 1000;
 //		if (onetime || mBusyMode) {
 //			newInterval = 10 * 1000;
 //		} else {

@@ -1,15 +1,20 @@
 package com.carapp.view.store;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amap.api.maps.AMapUtils;
+import com.amap.api.maps.model.LatLng;
 import com.bumptech.glide.Glide;
 import com.carapp.R;
 import com.carapp.models.entry.StoreEntry;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.layoutview.MRelativeLayout;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by Administrator on 2017/10/13.
@@ -31,6 +36,10 @@ public class StoreItemView extends MRelativeLayout<StoreEntry> {
     @ViewInject("tv_address")
     private TextView tvAddress;
 
+    private String lon;
+    private String lat;
+    private DecimalFormat decimalFormat;
+
     public StoreItemView(Context context) {
         super(context);
     }
@@ -46,6 +55,18 @@ public class StoreItemView extends MRelativeLayout<StoreEntry> {
     @Override
     protected int getLayoutResId() {
         return R.layout.item_store;
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        decimalFormat = new DecimalFormat("##0.0");
+    }
+
+    public void setDataSource(StoreEntry entry, String lon, String lat) {
+        this.lon = lon;
+        this.lat = lat;
+        super.setDataSource(entry);
     }
 
     @Override
@@ -67,6 +88,30 @@ public class StoreItemView extends MRelativeLayout<StoreEntry> {
         tvTime.setText(mDataItem.businessTime);
         tvTel.setText(mDataItem.tel);
         tvAddress.setText(mDataItem.shoploacl);
-//        tvDistance.setText(mDataItem.distance);
+
+        if (isEmpty(lon) || isEmpty(lat)
+                || isEmpty(mDataItem.shoplon)
+                || isEmpty(mDataItem.shoplat)) {
+            tvDistance.setText(0 + "km");
+        } else {
+            try {
+                float lonF = Float.parseFloat(lon);
+                float latF = Float.parseFloat(lat);
+                float shopLon = Float.parseFloat(mDataItem.shoplon);
+                float shopLat = Float.parseFloat(mDataItem.shoplat);
+                LatLng latLng1 = new LatLng(latF, lonF);
+                LatLng latLng2 = new LatLng(shopLat, shopLon);
+                float distance = AMapUtils.calculateLineDistance(latLng1,latLng2);
+                tvDistance.setText(decimalFormat.format(distance) + "km");
+            } catch (NumberFormatException e) {
+                tvDistance.setText(0 + "km");
+            } catch (Exception e) {
+                tvDistance.setText(0 + "km");
+            }
+        }
+    }
+
+    private boolean isEmpty(String str) {
+        return TextUtils.isEmpty(str) || "null".equalsIgnoreCase(str);
     }
 }

@@ -10,22 +10,28 @@ import android.widget.TextView;
 import com.carapp.R;
 import com.carapp.models.entry.CityItemEntry;
 
+import java.util.List;
+
+import me.yokeyword.indexablerv.EntityWrapper;
 import me.yokeyword.indexablerv.IndexableAdapter;
+import me.yokeyword.indexablerv.IndexableHeaderAdapter;
 
 /**
- * Created by YoKey on 16/10/7.
+ * Created by Administrator on 2017/11/2.
  */
-public class CityAdapter extends IndexableAdapter<CityItemEntry> {
+
+public class GpsHeaderAdapter extends IndexableHeaderAdapter<CityItemEntry> {
+
     private LayoutInflater mInflater;
 
-    public CityAdapter(Context context) {
+    public GpsHeaderAdapter(Context context, String index, String indexTitle, List datas) {
+        super(index, indexTitle, datas);
         mInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateTitleViewHolder(ViewGroup parent) {
-        View view = mInflater.inflate(R.layout.item_index_letter, parent, false);
-        return new IndexVH(view);
+    public int getItemViewType() {
+        return 1001;
     }
 
     @Override
@@ -35,24 +41,17 @@ public class CityAdapter extends IndexableAdapter<CityItemEntry> {
     }
 
     @Override
-    public void onBindTitleViewHolder(RecyclerView.ViewHolder holder, String indexTitle) {
-        IndexVH vh = (IndexVH) holder;
-        vh.tv.setText(indexTitle);
-    }
-
-    @Override
     public void onBindContentViewHolder(RecyclerView.ViewHolder holder, final CityItemEntry entity) {
         ContentVH vh = (ContentVH) holder;
         vh.tv.setText(entity.province_name);
-    }
-
-    private class IndexVH extends RecyclerView.ViewHolder {
-        TextView tv;
-
-        public IndexVH(View itemView) {
-            super(itemView);
-            tv = (TextView) itemView.findViewById(R.id.tv_index);
-        }
+        vh.tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(entity);
+                }
+            }
+        });
     }
 
     private class ContentVH extends RecyclerView.ViewHolder {
@@ -64,9 +63,9 @@ public class CityAdapter extends IndexableAdapter<CityItemEntry> {
         }
     }
 
-    private OnItemClickListener onItemClickListener;
+    private CityAdapter.OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(CityAdapter.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
