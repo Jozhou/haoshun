@@ -11,6 +11,7 @@ import com.carapp.activity.ConversationQuerylActivity;
 import com.carapp.models.entry.NewsEntry;
 import com.carapp.models.entry.StoreEntry;
 import com.carapp.models.operater.NewsCollectOperater;
+import com.carapp.models.operater.ShopOrderOperater;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ButtonUtils;
 import com.corelibrary.utils.DialogUtils;
@@ -65,10 +66,23 @@ public class StoreWebView extends WebView implements View.OnClickListener {
 		}
 		int id = v.getId();
 		if (id == R.id.tv_order) {
-
+			order();
 		} else if (id == R.id.tv_conversation_query) {
 			Intent intent = new Intent(mContext, ConversationQuerylActivity.class);
 			mContext.startActivity(intent);
 		}
+	}
+
+	private void order() {
+		final ShopOrderOperater operater = new ShopOrderOperater(mContext);
+		operater.setParams(Integer.parseInt(storeEntry.shopid));
+		operater.onReq(new BaseOperater.RspListener() {
+			@Override
+			public void onRsp(boolean success, Object obj) {
+				if (success) {
+					DialogUtils.showToastMessage(operater.getMsg());
+				}
+			}
+		});
 	}
 }

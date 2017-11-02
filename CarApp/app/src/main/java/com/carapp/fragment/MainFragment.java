@@ -63,6 +63,7 @@ public class MainFragment extends BaseFragment {
                 Intent intent = new Intent(mContext, ActivityWebNews.class);
                 intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 intent.putExtra(IntentCode.INTENT_NEWS_ITEM, entry);
+                intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.news_detail));
                 startActivity(intent);
             }
         });
@@ -110,7 +111,7 @@ public class MainFragment extends BaseFragment {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (popShare != null) {
+            if (popShare != null && popShare.isShowing()) {
                 popShare.dismiss();
                 return true;
             }

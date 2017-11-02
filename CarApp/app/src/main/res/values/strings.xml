@@ -130,6 +130,7 @@
     <string name="address">地址：$s</string>
     <string name="order_store">预约到店</string>
     <string name="map">地图</string>
+    <string name="store_detail">门店详情</string>
     <!-- 门店 end-->
 
 
@@ -152,6 +153,7 @@
 
     <!-- 资讯相关 start -->
     <string name="click_praise">点击收藏</string>
+    <string name="news_detail">资讯详情</string>
     <!-- 资讯相关 end -->
 
     <!-- 分享 start -->

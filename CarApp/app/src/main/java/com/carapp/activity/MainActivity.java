@@ -99,16 +99,30 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if (DoubleBackUtils.isFastDoubleClick()) {
+//                return super.onKeyDown(keyCode, event);
+//            } else {
+//                DialogUtils.showToastMessage(R.string.click_again_exit);
+//                return true;
+//            }
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+    protected boolean onFragmentKeyDown(int keyCode, KeyEvent event) {
+        if (super.onFragmentKeyDown(keyCode, event)) {
+            return true;
+        } else {
             if (DoubleBackUtils.isFastDoubleClick()) {
-                return super.onKeyDown(keyCode, event);
+                return false;
             } else {
                 DialogUtils.showToastMessage(R.string.click_again_exit);
                 return true;
             }
         }
-        return super.onKeyDown(keyCode, event);
     }
 }

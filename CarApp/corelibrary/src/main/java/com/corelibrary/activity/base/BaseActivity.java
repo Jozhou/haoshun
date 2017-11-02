@@ -467,6 +467,13 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (onFragmentKeyDown(keyCode, event)) {
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	protected boolean onFragmentKeyDown(int keyCode, KeyEvent event) {
 		Fragment fragment = getCurrentFragment();
 		if(fragment != null) {
 			if(fragment instanceof BaseFragment) {
@@ -480,11 +487,18 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 				}
 			}
 		}
-		return super.onKeyDown(keyCode, event);
+		return false;
 	}
 	
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (onFragmentKeyUp(keyCode, event)) {
+			return true;
+		}
+		return super.onKeyUp(keyCode, event);
+	}
+
+	protected boolean onFragmentKeyUp(int keyCode, KeyEvent event) {
 		Fragment fragment = getCurrentFragment();
 		if(fragment != null) {
 			if(fragment instanceof BaseFragment) {
@@ -498,7 +512,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 				}
 			}
 		}
-		return super.onKeyUp(keyCode, event);
+		return false;
 	}
 	
 	@Override

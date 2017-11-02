@@ -170,6 +170,7 @@ public class ConversationQuerylActivity extends BaseActivity {
                     String url = operater.getUrl();
                     if (!TextUtils.isEmpty(url)) {
                         Intent intent = new Intent(ConversationQuerylActivity.this, ActivityWeb.class);
+                        intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.oil_change_book));
                         intent.putExtra(IntentCode.INTENT_WEB_URL, url);
                         startActivity(intent);
                     }

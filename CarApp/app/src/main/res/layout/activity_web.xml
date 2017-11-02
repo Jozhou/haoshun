@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:lefticon="@drawable/btn_back"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <!-- Content layout -->
     <com.corelibrary.view.WebView

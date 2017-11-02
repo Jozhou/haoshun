@@ -123,6 +123,7 @@ public class MainHeaderView extends MLinearLayout {
         if (id == R.id.ll_conversation_know) {
             Intent intent = new Intent(mContext, ActivityWeb.class);
             intent.putExtra(IntentCode.INTENT_WEB_URL, Config.CONVERSATION_KNOW);
+            intent.putExtra(IntentCode.INTENT_WEB_TITLE, getResources().getString(R.string.conservation_knowledge));
             mContext.startActivity(intent);
         } else if (id == R.id.ll_conversation_query) {
             Intent intent = new Intent(mContext, ConversationQuerylActivity.class);
@@ -137,6 +138,7 @@ public class MainHeaderView extends MLinearLayout {
         } else if (id == R.id.ll_pro_intro) {
             Intent intent = new Intent(mContext, ActivityWeb.class);
             intent.putExtra(IntentCode.INTENT_WEB_URL, Config.PROJECT_INTRO);
+            intent.putExtra(IntentCode.INTENT_WEB_TITLE, getResources().getString(R.string.pro_inro));
             mContext.startActivity(intent);
         }
     }

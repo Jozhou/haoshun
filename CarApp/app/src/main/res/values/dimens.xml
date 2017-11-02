@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font_size_one">@dimen/dd_dimen_34px</dimen>
+    <dimen name="font_size_one">@dimen/dd_dimen_32px</dimen>
     <dimen name="font_size_two">@dimen/dd_dimen_30px</dimen>
     <dimen name="font_size_three">@dimen/dd_dimen_28px</dimen>
     <dimen name="font_size_four">@dimen/dd_dimen_26px</dimen>

@@ -37,6 +37,7 @@ public class NewsFragment extends BaseFragment {
                 Intent intent = new Intent(mContext, ActivityWebNews.class);
                 intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 intent.putExtra(IntentCode.INTENT_NEWS_ITEM, entry);
+                intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.news_detail));
                 startActivity(intent);
             }
         });

@@ -58,14 +58,17 @@ public class SettingsActivity extends BaseActivity {
         } else if (id == R.id.ll_feedback) {
             Intent intent = new Intent(this, ActivityWeb.class);
             intent.putExtra(IntentCode.INTENT_WEB_URL, Config.FEEDBACK);
+            intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.feedback));
             startActivity(intent);
         } else if (id == R.id.ll_service) {
             Intent intent = new Intent(this, ActivityWeb.class);
             intent.putExtra(IntentCode.INTENT_WEB_URL, Config.SERVICE_ITEM);
+            intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.service_term));
             startActivity(intent);
         } else if (id == R.id.ll_about_us) {
             Intent intent = new Intent(this, ActivityWeb.class);
             intent.putExtra(IntentCode.INTENT_WEB_URL, Config.ABOUT_US);
+            intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.about_us));
             startActivity(intent);
         }
     }

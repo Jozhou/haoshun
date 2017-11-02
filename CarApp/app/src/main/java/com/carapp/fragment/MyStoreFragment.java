@@ -45,6 +45,7 @@ public class MyStoreFragment extends BaseFragment {
                 Intent intent = new Intent(mContext, ActivityWebStore.class);
                 intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 intent.putExtra(IntentCode.INTENT_STORE_ITEM, entry);
+                intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.store_detail));
                 startActivity(intent);
             }
         });

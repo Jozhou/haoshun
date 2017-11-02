@@ -99,6 +99,7 @@ public class StoreFragment extends BaseFragment {
                 Intent intent = new Intent(mContext, ActivityWebStore.class);
                 intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
                 intent.putExtra(IntentCode.INTENT_STORE_ITEM, entry);
+                intent.putExtra(IntentCode.INTENT_WEB_TITLE, getString(R.string.store_detail));
                 startActivity(intent);
             }
         });
@@ -106,20 +107,20 @@ public class StoreFragment extends BaseFragment {
         rvConversation.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                StoreEntry entry = (StoreEntry) adapter.getData().get(position);
-                Intent intent = new Intent(mContext, ActivityWeb.class);
-                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
-                startActivity(intent);
+//                StoreEntry entry = (StoreEntry) adapter.getData().get(position);
+//                Intent intent = new Intent(mContext, ActivityWeb.class);
+//                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
+//                startActivity(intent);
             }
         });
 
         rvRepair.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                StoreEntry entry = (StoreEntry) adapter.getData().get(position);
-                Intent intent = new Intent(mContext, ActivityWeb.class);
-                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
-                startActivity(intent);
+//                StoreEntry entry = (StoreEntry) adapter.getData().get(position);
+//                Intent intent = new Intent(mContext, ActivityWeb.class);
+//                intent.putExtra(IntentCode.INTENT_WEB_URL, entry.url);
+//                startActivity(intent);
             }
         });
 
