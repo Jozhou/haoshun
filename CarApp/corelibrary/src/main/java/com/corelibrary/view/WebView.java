@@ -24,8 +24,8 @@ public class WebView extends RelativeLayout {
 	
 	private boolean bSucc;
 	private IWebViewCallback mCallback;
-	private static final String BACK_FLAG = "/app/driver/goback";
-	
+	private static final String BACK_FLAG = "/app/haoshun/goback";
+
 	/**
 	 * 设置webview的callback回调
 	 * @param c
@@ -70,7 +70,7 @@ public class WebView extends RelativeLayout {
 	@Override
 	protected void onBindListener() {
 		super.onBindListener();
-		webView.addJavascriptInterface(this, "DCar"); 
+		webView.addJavascriptInterface(this, "haoshun");
 		webView.setWebViewClient(new MWebViewClient(webView, mContext){
 			@Override
 			public void onReceivedError(android.webkit.WebView view,
@@ -128,7 +128,7 @@ public class WebView extends RelativeLayout {
 		super.onApplyData();
 		webView.setDownloadPicOnLoad(true);
 		webView.setBackgroundColor(Color.parseColor("#00000000"));
-		webView.setBackgroundResource(R.drawable.bg);
+//		webView.setBackgroundResource(R.drawable.bg);
 		webView.getSettings().setTextSize(TextSize.NORMAL);
 	}
 
