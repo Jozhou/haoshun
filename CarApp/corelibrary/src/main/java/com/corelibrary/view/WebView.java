@@ -13,13 +13,15 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings.TextSize;
 
 import com.corelibrary.R;
+import com.corelibrary.utils.LogcatUtils;
 import com.corelibrary.view.loading.ErrorView;
 import com.corelibrary.view.loading.RelativeLayout;
 import com.corelibrary.widget.WebView.MWebViewClient;
 import com.corelibrary.widget.WebView.MWebChromeClient;
 
 public class WebView extends RelativeLayout {
-	
+
+	private static final String TAG = WebView.class.getName();
 	private com.corelibrary.widget.WebView webView;
 	
 	private boolean bSucc;
@@ -75,28 +77,41 @@ public class WebView extends RelativeLayout {
 			@Override
 			public void onReceivedError(android.webkit.WebView view,
 					int errorCode, String description, String failingUrl) {
+				LogcatUtils.e(TAG, "onReceivedError");
 				bSucc = false;
+				super.onReceivedError(view, errorCode, description, failingUrl);
 			}
 			
 			@Override
 			public void onPageStarted(android.webkit.WebView view, String url,
 					Bitmap favicon) {
+				LogcatUtils.e(TAG, "onPageStarted");
 				gotoLoading();
 				bSucc = true;
+				super.onPageStarted(view, url, favicon);
 			}
 			
 			@Override
 			public void onPageFinished(android.webkit.WebView view, String url) {
+				LogcatUtils.e(TAG, "onPageFinished");
 				if(bSucc){
 					gotoSuccessful();
 				}else {
 					gotoError();
 				}
+				super.onPageFinished(view, url);
 			}
-			
+
+			@Override
+			public void onPageCommitVisible(android.webkit.WebView view, String url) {
+				LogcatUtils.e(TAG, "onPageCommitVisible");
+				super.onPageCommitVisible(view, url);
+			}
+
 			@Override
 			public void onReceivedSslError(android.webkit.WebView view,
 					SslErrorHandler handler, SslError error) {
+				LogcatUtils.e(TAG, "onReceivedSslError");
 				bSucc = false;
 			}
 			
@@ -126,7 +141,7 @@ public class WebView extends RelativeLayout {
 	@Override
 	protected void onApplyData() {
 		super.onApplyData();
-		webView.setDownloadPicOnLoad(true);
+		webView.setDownloadPicOnLoad(false);
 		webView.setBackgroundColor(Color.parseColor("#00000000"));
 //		webView.setBackgroundResource(R.drawable.bg);
 		webView.getSettings().setTextSize(TextSize.NORMAL);

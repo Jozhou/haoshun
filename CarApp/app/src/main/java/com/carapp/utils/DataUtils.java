@@ -27,8 +27,10 @@ public class DataUtils {
 	private static final String KEY_ACCOUNT_PWD = "account_PWD";
 	private static final String KEY_ACCOUNT_TEL = "account_tel";
 	private static final String KEY_ACCOUNT_CARCODE = "account_carcode";
+	private static final String KEY_ACCOUNT_USERTYPE = "account_usertype";
 	private static final String KEY_CONVERSATION_QUERY_ITEM = "conversation_query_item_";
 	private static final String KEY_OIL_QUERY_ITEM = "oil_query_item_";
+	private static final String KEY_ACCOUNT_TEL2 = "account_tel2";
     
     /**
      * 上次发生crash的时间戳
@@ -57,6 +59,8 @@ public class DataUtils {
 			PreferenceUtils.putString(KEY_ACCOUNT_PWD, account.pwd);
 			PreferenceUtils.putString(KEY_ACCOUNT_TEL, account.tel);
 			PreferenceUtils.putString(KEY_ACCOUNT_CARCODE, account.carcode);
+			PreferenceUtils.putInt(KEY_ACCOUNT_USERTYPE, account.usertype);
+			PreferenceUtils.putString(KEY_ACCOUNT_TEL2, account.tel2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -81,6 +85,8 @@ public class DataUtils {
 			account.pwd = PreferenceUtils.getString(KEY_ACCOUNT_PWD);
 			account.tel = PreferenceUtils.getString(KEY_ACCOUNT_TEL);
 			account.carcode = PreferenceUtils.getString(KEY_ACCOUNT_CARCODE);
+			account.usertype = PreferenceUtils.getInt(KEY_ACCOUNT_USERTYPE);
+			account.tel2 = PreferenceUtils.getString(KEY_ACCOUNT_TEL2);
 		} catch (Exception e) {
 			
 		}
@@ -103,6 +109,8 @@ public class DataUtils {
 		PreferenceUtils.remove(KEY_ACCOUNT_PWD);
 		PreferenceUtils.remove(KEY_ACCOUNT_TEL);
 		PreferenceUtils.remove(KEY_ACCOUNT_CARCODE);
+		PreferenceUtils.remove(KEY_ACCOUNT_USERTYPE);
+		PreferenceUtils.remove(KEY_ACCOUNT_TEL2);
 	}
 
 	public static void setImageurl(String imageurl) {

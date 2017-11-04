@@ -27,9 +27,8 @@ import com.corelibrary.manager.ActivityManager;
 import com.corelibrary.models.http.IOperater;
 import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.LogcatUtils;
+import com.corelibrary.utils.OSUtils;
 import com.corelibrary.utils.ViewInject.ViewInjectUtils;
-import com.tool.utils.OSUtils;
-import com.umeng.analytics.MobclickAgent;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;

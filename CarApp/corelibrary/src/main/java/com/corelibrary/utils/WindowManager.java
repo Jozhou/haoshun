@@ -1,4 +1,4 @@
-package com.tool.utils;
+package com.corelibrary.utils;
 
 import android.app.Activity;
 import android.content.ContentResolver;

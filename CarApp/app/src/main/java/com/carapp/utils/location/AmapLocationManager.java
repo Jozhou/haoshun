@@ -28,11 +28,11 @@ class AmapLocationManager implements ILocationManager {
 	/**
 	 * 定位错误最大次数
 	 */
-	private static final int LOCATION_MAXERROR = 2;
+	private static final int LOCATION_MAXERROR = 10;
 	/**
 	 * 定位信息有效的最大时间间隔
 	 */
-	private static final int INTERVAL_VALID_MAX = 10000;
+	private static final int INTERVAL_VALID_MAX = 100000;
 
 	/**
 	 * 当前位置

@@ -5,7 +5,6 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
 import com.corelibrary.application.AppContext;
-import com.tool.utils.WindowManager;
 
 import java.io.BufferedReader;
 import java.io.File;

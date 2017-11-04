@@ -2,6 +2,7 @@ package com.carapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.carapp.R;
+import com.carapp.common.data.Account;
 import com.carapp.models.operater.LoginOperater;
 import com.corelibrary.activity.base.BaseActivity;
 import com.corelibrary.manager.ActivityManager;
 import com.corelibrary.models.http.BaseOperater;
+import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.TitleBar;
 
@@ -75,15 +78,24 @@ public class LoginActivity extends BaseActivity {
     private void doLogin() {
         String tel = etAccount.getText().toString().trim();
         String pwd = etPsw.getText().toString().trim();
+        if (TextUtils.isEmpty(tel) || TextUtils.isEmpty(pwd)) {
+            DialogUtils.showToastMessage(R.string.tip_input_name_psw);
+            return;
+        }
+
         LoginOperater operater = new LoginOperater(this);
         operater.setParams("1", tel, pwd);
         operater.onReq(new BaseOperater.RspListener() {
             @Override
             public void onRsp(boolean success, Object obj) {
                 if (success) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if (Account.get().isLogin()) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        DialogUtils.showToastMessage(R.string.login_fail);
+                    }
                 }
             }
         });

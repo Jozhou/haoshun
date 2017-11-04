@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.corelibrary.application.AppContext;
-import com.tool.utils.OSUtils;
 
 import java.util.Set;
 

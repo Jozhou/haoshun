@@ -27,6 +27,8 @@ import java.util.concurrent.Executors;
  *
  */  
 public class LogcatUtils {
+
+	private static final String TAG = "LogTag";
 	
 	private static File file = null;
 	private static String createLogFileTime = null;
@@ -43,7 +45,7 @@ public class LogcatUtils {
 			try {
 				createLogFileTime = new SimpleDateFormat(SDF_YYYYMMDD).format(new Date());
 				file = new File(FileUtils.getCachePath() + FileUtils.CACHELOGPATH
-						+ "/dcar-" + createLogFileTime + ".log");
+						+ "/app-" + createLogFileTime + ".log");
 				if (!file.getParentFile().exists()) {
 					file.getParentFile().mkdirs();
 				}
@@ -195,10 +197,10 @@ public class LogcatUtils {
 	
 	public static String crash(String msg) {
 		if(getIsDebug()) {
-			Log.e("DCar", "crash occured : " + Thread.currentThread().getId() + "  " + msg);
+			Log.e(TAG, "crash occured : " + Thread.currentThread().getId() + "  " + msg);
 		}
 		String path = FileUtils.getCachePath() + FileUtils.CACHECRASHPATH
-				+ "/dcar-" + new SimpleDateFormat(SDF_YYYYMMDD).format(new Date()) + ".log";
+				+ "/app-" + new SimpleDateFormat(SDF_YYYYMMDD).format(new Date()) + ".log";
 		try {
 			File desFile = new File(path);
 			if (!desFile.getParentFile().exists()) {
@@ -257,11 +259,11 @@ public class LogcatUtils {
 			}
 		}
 		if(isdebug) {
-			Log.i("DCar", Thread.currentThread().getId() + "  " + sbmsg.toString());
+			Log.i(TAG, Thread.currentThread().getId() + "  " + sbmsg.toString());
 		}
 		if(isstorelog) {
 			String path = FileUtils.getCachePath() + FileUtils.CACHEDBPATH
-					+ "/dcar-" + new SimpleDateFormat(SDF_YYYYMMDD).format(new Date()) + ".log";
+					+ "/app-" + new SimpleDateFormat(SDF_YYYYMMDD).format(new Date()) + ".log";
 			try {
 				File desFile = new File(path);
 				if (!desFile.getParentFile().exists()) {

@@ -43,6 +43,8 @@ public class Account extends BaseEntry {
 	public String pwd = "";
     public String tel = "";
 	public String carcode = "";
+	public int usertype; // 0是普通的，1是修理厂
+	public String tel2 = ""; // 维修厂的手机号
 
 	public CharSequence getSexStr() {
 		if (sex == 1) {
@@ -96,7 +98,8 @@ public class Account extends BaseEntry {
 			String brand_name, String series_id,
 			String series_name, String year_style,
 			String version, String pwd, String tel,
-					  String carcode) {
+					  String carcode, int usertype,
+					  String tel2) {
 		this.user_id = user_id;
 		this.imageurl = imageurl;
 		this.nickname = nickname;
@@ -110,6 +113,8 @@ public class Account extends BaseEntry {
 		this.pwd = pwd;
         this.tel = tel;
 		this.carcode = carcode;
+		this.usertype = usertype;
+		this.tel2 = tel2;
 
 		save();
 	}
@@ -199,6 +204,8 @@ public class Account extends BaseEntry {
 		this.pwd = "";
         this.tel = "";
 		this.carcode = "";
+		this.usertype = 0;
+		this.tel2 = "";
 		// 清除账号信息
 		DataUtils.removeAccount();
 		// 清除缓存

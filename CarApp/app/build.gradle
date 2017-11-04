@@ -63,5 +63,5 @@ dependencies {
     compile project(':corelibrary')
     compile project(':imagepicker')
     compile(name:'SMSSDK-3.0.0',ext:'aar')
-//    compile(name:'SMSSDKGUI-3.0.0',ext:'aar')
+    compile(name:'SMSSDKGUI-3.0.0',ext:'aar')
 }

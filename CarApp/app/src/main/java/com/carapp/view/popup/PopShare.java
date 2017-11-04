@@ -12,6 +12,13 @@ import android.widget.TextView;
 import com.carapp.R;
 import com.corelibrary.utils.DialogUtils;
 
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+
 
 /**
  * Created by Administrator on 2017/10/30.
@@ -66,7 +73,7 @@ public class PopShare extends PopupWindow implements View.OnClickListener {
             dismiss();
         } else if (id == R.id.tv_qq) {
             dismiss();
-            DialogUtils.showToastMessage("分享到QQ");
+            shareToQQ();
             if (mOneClickListener != null) {
                 mOneClickListener.onClick(tvQQ);
             }
@@ -96,6 +103,38 @@ public class PopShare extends PopupWindow implements View.OnClickListener {
 
     public void setCancelClickListener(View.OnClickListener listener) {
         this.mCancelClickListener = listener;
+    }
+
+    private void shareToQQ() {
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setTitle("好顺");
+        sp.setTitleUrl("http://www.baidu.com");// 标题的超链接
+        sp.setText("一起来使用吧");
+        sp.setImageUrl("http://47.92.150.165:7433/File/images/20165421020347.jpg");
+//        sp.setSite("发布分享的网站名称");
+//        sp.setSiteUrl("发布分享网站的地址");
+
+        Platform qq = ShareSDK.getPlatform(QQ.NAME);
+
+        // 设置分享事件回调（注：回调放在不能保证在主线程调用，不可以在里面直接处理UI操作）
+        qq.setPlatformActionListener(new PlatformActionListener() {
+            public void onError(Platform arg0, int arg1, Throwable arg2) {
+                //失败的回调，arg:平台对象，arg1:表示当前的动作，arg2:异常信息
+                DialogUtils.showToastMessage(R.string.share_fail);
+            }
+
+            public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
+                //分享成功的回调
+                DialogUtils.showToastMessage(R.string.share_succ);
+            }
+
+            public void onCancel(Platform arg0, int arg1) {
+                //取消分享的回调
+            }
+        });
+        // 执行图文分享
+        qq.share(sp);
+
     }
 
     @Override

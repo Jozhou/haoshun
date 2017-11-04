@@ -17,9 +17,14 @@ import com.carapp.utils.location.LocationManager;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.loading.FrameLayout;
+import com.github.promeg.pinyinhelper.Pinyin;
+import com.github.promeg.pinyinhelper.PinyinMapDict;
+import com.github.promeg.tinypinyin.lexicons.android.cncity.CnCityDict;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.yokeyword.indexablerv.IndexableAdapter;
 import me.yokeyword.indexablerv.IndexableLayout;

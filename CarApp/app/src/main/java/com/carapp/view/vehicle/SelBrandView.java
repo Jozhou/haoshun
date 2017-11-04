@@ -13,8 +13,12 @@ import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
 import com.corelibrary.view.loading.FrameLayout;
+import com.github.promeg.pinyinhelper.Pinyin;
+import com.github.promeg.pinyinhelper.PinyinMapDict;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.yokeyword.indexablerv.IndexableAdapter;
 import me.yokeyword.indexablerv.IndexableLayout;
@@ -56,6 +60,18 @@ public class SelBrandView extends FrameLayout {
     @Override
     protected void onApplyData() {
         super.onApplyData();
+
+        Pinyin.init(Pinyin.newConfig()
+                .with(new PinyinMapDict() {
+                    @Override
+                    public Map<String, String[]> mapping() {
+                        HashMap<String, String[]> map = new HashMap<String, String[]>();
+                        map.put("长安",  new String[]{"CHANG", "AN"});
+                        map.put("长城",  new String[]{"CHANG", "CHENG"});
+                        map.put("长丰",  new String[]{"CHANG", "FENG"});
+                        return map;
+                    }
+                }));
         indexableLayout.setLayoutManager(new LinearLayoutManager(mContext));
         indexableLayout.setCompareMode(IndexableLayout.MODE_FAST);
         mAdapter = new BrandAdapter(mContext);

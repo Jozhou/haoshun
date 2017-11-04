@@ -1,4 +1,4 @@
-package com.tool.utils;
+package com.corelibrary.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;

@@ -98,7 +98,7 @@ public class WebView extends android.webkit.WebView {
 		if(OSUtils.hasFroyo()) {
 			getSettings().setPluginState(PluginState.ON);
 		}
-		getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 		getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		if(OSUtils.hasHoneycomb()) {
 			getSettings().setAllowContentAccess(true);
