@@ -58,5 +58,23 @@
 		BypassApproval="false"
 		ShareByAppClient="true"
 		Enable="true" />
+
+	<Wechat
+		Id="2"
+		SortId="2"
+		AppId="wx4868b35061f87885"
+		AppSecret="64020361b8ec4c99936c0e3999a9f249"
+		userName="gh_afb25ac019c9"
+		path="pages/index/index.html?id=1"
+		BypassApproval="true"
+		Enable="true" />
+
+	<WechatMoments
+		Id="3"
+		SortId="3"
+		AppId="wx4868b35061f87885"
+		AppSecret="64020361b8ec4c99936c0e3999a9f249"
+		BypassApproval="true"
+		Enable="true" />
 	
 </DevInfor>

@@ -1,6 +1,8 @@
 package com.carapp.view.popup;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 
 
 /**
@@ -79,13 +83,13 @@ public class PopShare extends PopupWindow implements View.OnClickListener {
             }
         } else if (id == R.id.tv_wx) {
             dismiss();
-            DialogUtils.showToastMessage("分享到微信");
+            shareToWX(Wechat.NAME);
             if (mTwoClickListener != null) {
                 mTwoClickListener.onClick(tvWx);
             }
         } else if (id == R.id.tv_fri) {
             dismiss();
-            DialogUtils.showToastMessage("分享到朋友圈");
+            shareToWX(WechatMoments.NAME);
             if (mCancelClickListener != null) {
                 mCancelClickListener.onClick(tvFri);
             }
@@ -134,6 +138,42 @@ public class PopShare extends PopupWindow implements View.OnClickListener {
         });
         // 执行图文分享
         qq.share(sp);
+
+    }
+
+    private void shareToWX(String platfrom) {
+        Platform.ShareParams sp = new Platform.ShareParams();
+
+        Bitmap logo = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_launcher);
+        sp.setShareType(Platform.SHARE_WEBPAGE);//分享网页一定要写
+//        sp.setShareType(Platform.SHARE_IMAGE);//分享图片一定要写
+        sp.setImageData(logo);
+//        sp.setImagePath(""); // 三选一
+//        sp.setImageUrl("http://47.92.150.165:7433/File/images/20165421020347.jpg");
+        sp.setTitle("好顺");
+        sp.setText("一起来使用吧");
+        sp.setUrl("http://www.baidu.com");
+
+        Platform weChat = ShareSDK.getPlatform(platfrom);
+
+        // 设置分享事件回调（注：回调放在不能保证在主线程调用，不可以在里面直接处理UI操作）
+        weChat.setPlatformActionListener(new PlatformActionListener() {
+            public void onError(Platform arg0, int arg1, Throwable arg2) {
+                //失败的回调，arg:平台对象，arg1:表示当前的动作，arg2:异常信息
+                DialogUtils.showToastMessage(R.string.share_fail);
+            }
+
+            public void onComplete(Platform arg0, int arg1, HashMap<String, Object> arg2) {
+                //分享成功的回调
+                DialogUtils.showToastMessage(R.string.share_succ);
+            }
+
+            public void onCancel(Platform arg0, int arg1) {
+                //取消分享的回调
+            }
+        });
+        // 执行图文分享
+        weChat.share(sp);
 
     }
 
