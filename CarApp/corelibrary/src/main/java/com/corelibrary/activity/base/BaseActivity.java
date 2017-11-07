@@ -29,6 +29,7 @@ import com.corelibrary.utils.DialogUtils;
 import com.corelibrary.utils.LogcatUtils;
 import com.corelibrary.utils.OSUtils;
 import com.corelibrary.utils.ViewInject.ViewInjectUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -436,14 +437,14 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 	protected void onResume() {
 		super.onResume();
 		LogcatUtils.i(TAG, "onResume " + this.getClass().getName());
-//		MobclickAgent.onResume(context);
+		MobclickAgent.onResume(context);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		LogcatUtils.i(TAG, "onPause " + this.getClass().getName());
-//		MobclickAgent.onPause(context);
+		MobclickAgent.onPause(context);
 	}
 	
 	@Override

@@ -6,16 +6,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 
+import com.bumptech.glide.Glide;
 import com.carapp.R;
 import com.carapp.context.IntentCode;
 import com.carapp.models.adapter.FrameNumAdapter;
 import com.carapp.models.entry.NameValueEntry;
 import com.corelibrary.activity.base.BaseActivity;
+import com.corelibrary.utils.DeviceUtils;
 import com.corelibrary.utils.ViewInject.ViewInject;
+import com.corelibrary.utils.glide.GlideResizeTransform;
 import com.corelibrary.view.TitleBar;
 
 import java.util.List;
@@ -36,6 +40,8 @@ public class FrameDetailActivity extends BaseActivity {
     private ListView lvOem;
     @ViewInject("lv_parts")
     private ListView lvParts;
+    @ViewInject("iv_pic")
+    private ImageView ivPic;
 
     @ViewInject("fl_container")
     private FrameLayout flContainer;
@@ -96,5 +102,10 @@ public class FrameDetailActivity extends BaseActivity {
 
         rgTabs.check(R.id.rb_all);
         scrollView.smoothScrollTo(0, 0);
+
+        int width = DeviceUtils.getScreenWidth();
+        Glide.with(this).load(R.drawable.bg_frame_detail)
+                .override(width, width)
+                .into(ivPic);
     }
 }

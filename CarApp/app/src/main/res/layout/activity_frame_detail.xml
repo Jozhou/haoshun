@@ -27,8 +27,7 @@
             <ImageView
                 android:id="@+id/iv_pic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_frame_detail"/>
+                android:layout_height="wrap_content"/>
 
             <RadioGroup
                 android:id="@+id/rg_tab"

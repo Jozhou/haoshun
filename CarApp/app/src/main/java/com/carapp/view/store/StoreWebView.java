@@ -4,20 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.widget.TextView;
 
 import com.carapp.R;
 import com.carapp.activity.ConversationQuerylActivity;
-import com.carapp.models.entry.NewsEntry;
 import com.carapp.models.entry.StoreEntry;
-import com.carapp.models.operater.NewsCollectOperater;
 import com.carapp.models.operater.ShopOrderOperater;
+import com.carapp.utils.NavUtils;
 import com.corelibrary.models.http.BaseOperater;
 import com.corelibrary.utils.ButtonUtils;
 import com.corelibrary.utils.DialogUtils;
+import com.corelibrary.utils.OSUtils;
 import com.corelibrary.view.WebView;
 
+
 public class StoreWebView extends WebView implements View.OnClickListener {
+
+	private static final String GAODEAPP = "com.autonavi.minimap";
+	private static final String BAIDUAPP = "com.baidu.BaiduMap";
 
 	private TextView tvOrder;
 	private TextView tvQuery;
@@ -85,4 +90,16 @@ public class StoreWebView extends WebView implements View.OnClickListener {
 			}
 		});
 	}
+
+	@JavascriptInterface
+	public void startNav(String addr) {
+		if (OSUtils.isInstallByread(GAODEAPP)) {
+			NavUtils.setUpGaodeAppByLoca(addr);
+		} else if (OSUtils.isInstallByread(BAIDUAPP)) {
+			NavUtils.setUpBaiduAPPByName(addr);
+		} else {
+			DialogUtils.showToastMessage(mContext.getResources().getString(R.string.tip_install_map));
+		}
+	}
+
 }
