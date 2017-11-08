@@ -72,10 +72,10 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-    <com.carapp.view.news.LatestNewsListView
+    <com.goodoil.aft.view.news.LatestNewsListView
         android:id="@+id/lv_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/font_color_two"></com.carapp.view.news.LatestNewsListView>
+        android:background="@color/font_color_two"></com.goodoil.aft.view.news.LatestNewsListView>
 
 </LinearLayout>

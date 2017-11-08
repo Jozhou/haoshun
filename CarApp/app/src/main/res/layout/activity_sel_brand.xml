@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/font_color_two">
-        <com.carapp.view.vehicle.SelBrandView
+        <com.goodoil.aft.view.vehicle.SelBrandView
             android:id="@+id/v_sel_brand"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

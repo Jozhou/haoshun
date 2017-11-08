@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/font_color_two">
 
-    <com.carapp.view.news.MyNewsListView
+    <com.goodoil.aft.view.news.MyNewsListView
         android:id="@+id/rv_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

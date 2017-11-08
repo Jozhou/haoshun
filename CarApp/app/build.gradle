@@ -4,7 +4,7 @@ android {
     compileSdkVersion android_compileSdkVersion
     buildToolsVersion android_buildToolsVersion
     defaultConfig {
-        applicationId "com.carapp"
+        applicationId "com.goodoil.aft"
         minSdkVersion android_minSdkVersion
         targetSdkVersion android_targetSdkVersion
         versionCode 1

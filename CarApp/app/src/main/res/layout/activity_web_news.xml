@@ -14,7 +14,7 @@
         android:visibility="visible"/>
 
     <!-- Content layout -->
-    <com.carapp.view.news.NewsWebView
+    <com.goodoil.aft.view.news.NewsWebView
         android:id="@+id/web_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -51,17 +51,17 @@
             android:id="@+id/fl_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.carapp.view.store.StoreListView
+            <com.goodoil.aft.view.store.StoreListView
                 android:id="@+id/rv_all"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.carapp.view.store.StoreListView
+            <com.goodoil.aft.view.store.StoreListView
                 android:id="@+id/rv_conversation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.carapp.view.store.StoreListView
+            <com.goodoil.aft.view.store.StoreListView
                 android:id="@+id/rv_repair"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
