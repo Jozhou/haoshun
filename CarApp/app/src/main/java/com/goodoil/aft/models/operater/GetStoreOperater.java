@@ -47,8 +47,8 @@ public class GetStoreOperater extends BaseArrayOperater<StoreEntry> {
                 entry.tel =jsonObject.getString("tel");
                 entry.shoploacl =jsonObject.getString("shoploacl");
                 entry.url =jsonObject.getString("url");
-                entry.shoplon =jsonObject.getString("shoplon");
-                entry.shoplat =jsonObject.getString("shoplat");
+                entry.shoplon =jsonObject.optString("shoplon");
+                entry.shoplat =jsonObject.optString("shoplat");
                 entry.businessTime =jsonObject.getString("businessTime");
                 entry.distance =jsonObject.optString("distance");
 

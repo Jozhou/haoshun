@@ -1,6 +1,8 @@
 package com.goodoil.aft.view.popup;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -100,10 +102,14 @@ public class PopConfirm extends PopupWindow implements OnClickListener {
 		vContent.setAnimation(animation);
 
 		Animation fadeAnimation = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
-		mContentView.setAnimation(fadeAnimation);
+		vEmpty.setAnimation(fadeAnimation);
 
 		animation.start();
 		fadeAnimation.start();
+	}
+
+	public void show() {
+		showAtLocation(((Activity)mContext).getWindow().getDecorView(), 0, 0, Gravity.NO_GRAVITY);
 	}
 
 }

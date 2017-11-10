@@ -25,7 +25,8 @@ public class Config {
     }
 
     public static String getBaseUrl() {
-        return "http://47.92.150.165:7433";
+        return "http://39.106.23.54";
+//        return "http://47.92.150.165:7433";
     }
 
 }

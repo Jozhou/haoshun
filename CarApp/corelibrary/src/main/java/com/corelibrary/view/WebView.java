@@ -72,7 +72,7 @@ public class WebView extends RelativeLayout {
 	@Override
 	protected void onBindListener() {
 		super.onBindListener();
-		webView.addJavascriptInterface(this, "haoshun");
+		webView.addJavascriptInterface(this, "moto");
 		webView.setWebViewClient(new MWebViewClient(webView, mContext){
 			@Override
 			public void onReceivedError(android.webkit.WebView view,
